@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Photography - Ram Patra</title>
+    <title>{{ site.title }}</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
     <!--[if lte IE 8]>
@@ -29,7 +29,16 @@
 
     <!-- Main -->
     <div id="main">
-        <article class="thumb">
+        {% for image in site.static_files %}
+            {% if image.path contains 'images' %}
+                <article class="thumb">
+                    <a href="{{ site.baseurl }}{{ image.path }}" class="image"><img src="{{ site.baseurl }}{{ image.path }}" alt=""/></a>
+                    <!--<h2>Title</h2>
+                    <p>Desc</p>-->
+                </article>
+            {% endif %}
+        {% endfor %}
+        <!--<article class="thumb">
             <a href="images/fulls/01.jpg" class="image"><img src="images/thumbs/01.jpg" alt=""/></a>
             <h2>Magna feugiat lorem</h2>
             <p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
@@ -88,7 +97,7 @@
             <a href="images/fulls/12.jpg" class="image"><img src="images/thumbs/12.jpg" alt=""/></a>
             <h2>Vehicula id nulla dignissim</h2>
             <p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
-        </article>
+        </article>-->
     </div>
 
     <!-- Footer -->
@@ -96,31 +105,34 @@
         <div class="inner split">
             <div>
                 <section>
-                    <h2>Magna feugiat sed adipiscing</h2>
-                    <p>Nulla consequat, ex ut suscipit rutrum, mi dolor tincidunt erat, et scelerisque turpis ipsum eget
-                        quis orci mattis aliquet. Maecenas fringilla et ante at lorem et ipsum. Dolor nulla eu bibendum
-                        sapien. Donec non pharetra dui. Nulla consequat, ex ut suscipit rutrum, mi dolor tincidunt erat,
-                        et scelerisque turpis ipsum.</p>
+                    <h2>Hey there, my name is Ram</h2>
+                    <p>{{ site.bio }}</p>
                 </section>
                 <section>
                     <h2>Follow me on ...</h2>
                     <ul class="icons">
-                        <li><a href="https://www.twitter.com/ramswarooppatra" class="icon fa-twitter"><span
-                                class="label">Twitter</span></a></li>
-                        <li><a href="https://www.facebook.com/ramswaroop" class="icon fa-facebook"><span class="label">Facebook</span></a>
+                        <li><a href="{{ site.social_urls.facebook }}" class="icon fa-facebook"><span
+                                class="label">Facebook</span></a>
                         </li>
-                        <li><a href="https://www.instagram.com/ramswarooppatra" class="icon fa-instagram"><span
-                                class="label">Instagram</span></a></li>
-                        <li><a href="https://www.github.com/ramswaroop" class="icon fa-github"><span class="label">GitHub</span></a>
+                        <li><a href="{{ site.social_urls.twitter }}" class="icon fa-twitter"><span
+                                class="label">Twitter</span></a>
                         </li>
-                        <li><a href="https://dribbble.com/ramswaroop" class="icon fa-dribbble"><span class="label">Dribbble</span></a>
+                        <li><a href="{{ site.social_urls.instagram }}" class="icon fa-instagram"><span
+                                class="label">Instagram</span></a>
                         </li>
-                        <li><a href="https://in.linkedin.com/in/ramswarooppatra" class="icon fa-linkedin"><span
-                                class="label">LinkedIn</span></a></li>
+                        <li><a href="{{ site.social_urls.dribbble }}" class="icon fa-dribbble"><span
+                                class="label">Dribbble</span></a>
+                        </li>
+                        <li><a href="{{ site.social_urls.github }}" class="icon fa-github"><span 
+                                class="label">GitHub</span></a>
+                        </li>
+                        <li><a href="{{ site.social_urls.linkedin }}" class="icon fa-linkedin"><span
+                                class="label">LinkedIn</span></a>
+                        </li>
                     </ul>
                 </section>
                 <p class="copyright">
-                    &copy; Ram Patra. Design: 
+                    &copy; {{ site.author }}. Design: {{ site.web_design }} 
                 </p>
             </div>
             <div>
