@@ -18,7 +18,7 @@ layout: default
     <!-- Main -->
     <div id="main">
         {% for image in site.static_files %}
-        {% if image.path contains 'DSC_' %}
+        {% if image.path contains 'fulls' %}
         <article class="thumb">
             <a href="{{ site.baseurl }}{{ image.path }}" class="image"><img src="{{ site.baseurl }}{{ image.path }}"
                                                                             alt=""/></a>
