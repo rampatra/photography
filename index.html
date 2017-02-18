@@ -1,18 +1,6 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-    <title>{{ site.title }}</title>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
-    <!--[if lte IE 8]>
-    <script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-    <link rel="stylesheet" href="assets/css/main.css"/>
-    <!--[if lte IE 9]>
-    <link rel="stylesheet" href="assets/css/ie9.css"/><![endif]-->
-    <!--[if lte IE 8]>
-    <link rel="stylesheet" href="assets/css/ie8.css"/><![endif]-->
-</head>
-<body>
+---
+layout: default
+---
 
 <!-- Wrapper -->
 <div id="wrapper">
@@ -30,13 +18,14 @@
     <!-- Main -->
     <div id="main">
         {% for image in site.static_files %}
-            {% if image.path contains 'images' %}
-                <article class="thumb">
-                    <a href="{{ site.baseurl }}{{ image.path }}" class="image"><img src="{{ site.baseurl }}{{ image.path }}" alt=""/></a>
-                    <!--<h2>Title</h2>
-                    <p>Desc</p>-->
-                </article>
-            {% endif %}
+        {% if image.path contains 'DSC_' %}
+        <article class="thumb">
+            <a href="{{ site.baseurl }}{{ image.path }}" class="image"><img src="{{ site.baseurl }}{{ image.path }}"
+                                                                            alt=""/></a>
+            <h2></h2>
+            <p></p>
+        </article>
+        {% endif %}
         {% endfor %}
         <!--<article class="thumb">
             <a href="images/fulls/01.jpg" class="image"><img src="images/thumbs/01.jpg" alt=""/></a>
@@ -123,7 +112,7 @@
                         <li><a href="{{ site.social_urls.dribbble }}" class="icon fa-dribbble"><span
                                 class="label">Dribbble</span></a>
                         </li>
-                        <li><a href="{{ site.social_urls.github }}" class="icon fa-github"><span 
+                        <li><a href="{{ site.social_urls.github }}" class="icon fa-github"><span
                                 class="label">GitHub</span></a>
                         </li>
                         <li><a href="{{ site.social_urls.linkedin }}" class="icon fa-linkedin"><span
@@ -132,7 +121,7 @@
                     </ul>
                 </section>
                 <p class="copyright">
-                    &copy; {{ site.author }}. Design: {{ site.web_design }} 
+                    &copy; {{ site.author }}. Design: {{ site.web_design }}
                 </p>
             </div>
             <div>
@@ -157,17 +146,4 @@
             </div>
         </div>
     </footer>
-
 </div>
-
-<!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/jquery.poptrox.min.js"></script>
-<script src="assets/js/skel.min.js"></script>
-<script src="assets/js/util.js"></script>
-<!--[if lte IE 8]>
-<script src="assets/js/ie/respond.min.js"></script><![endif]-->
-<script src="assets/js/main.js"></script>
-
-</body>
-</html>
