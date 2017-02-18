@@ -18,14 +18,14 @@ layout: default
     <!-- Main -->
     <div id="main">
         {% for image in site.static_files %}
-        {% if image.path contains 'fulls' %}
-        <article class="thumb">
-            <a href="{{ site.baseurl }}{{ image.path }}" class="image"><img src="{{ site.baseurl }}{{ image.path }}"
-                                                                            alt=""/></a>
-            <h2></h2>
-            <p></p>
-        </article>
-        {% endif %}
+            {% if image.path contains 'fulls' %}
+                <article class="thumb">
+                    <a href="{{ site.baseurl }}{{ site.image_fulls_loc }}{{ image.name }}" class="image">
+                    <img src="{{ site.baseurl }}{{ site.image_thumbs_loc }}{{ image.name }}" alt=""/></a>
+                    <h2></h2>
+                    <p></p>
+                </article>
+            {% endif %}
         {% endfor %}
         <!--<article class="thumb">
             <a href="images/fulls/01.jpg" class="image"><img src="images/thumbs/01.jpg" alt=""/></a>

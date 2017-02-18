@@ -5,6 +5,8 @@ subtitle: "See the world through my eyes!"
 author: "Ram Patra"
 bio: "I am a developer and a tech aficionado from India. Love making teeny tiny apps solving tiny problems in life and now learning photography."
 web_design: "AJ"
+image_fulls_loc: "images/fulls/"
+image_thumbs_loc: "images/thumbs/"
 social_urls:
   facebook: "https://www.facebook.com/ramswaroop"
   twitter: "https://www.twitter.com/ramswarooppatra"
