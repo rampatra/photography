@@ -48,3 +48,9 @@ fabric.properties
 # MAC OS
 .DS_Store
 */**/.DS_Store
+
+### Jekyll template
+_site/
+.sass-cache/
+.jekyll-metadata
+

@@ -1,14 +1,15 @@
-baseurl: http://photography.ramswaroop.me
-title: Photography by Ram Patra
-subtitle: See the world through my eyes!
-author: Ram Patra
-bio: I am a developer and a tech aficionado from India. Love making teeny tiny apps solving tiny problems in life and now learning photography.
-web_design: AJ
+baseurl: ""
+url: "http://photography.ramswaroop.me"
+title: "Photography by Ram Patra"
+subtitle: "See the world through my eyes!"
+author: "Ram Patra"
+bio: "I am a developer and a tech aficionado from India. Love making teeny tiny apps solving tiny problems in life and now learning photography."
+web_design: "AJ"
 social_urls:
-  facebook: https://www.facebook.com/ramswaroop
-  twitter: https://www.twitter.com/ramswarooppatra
-  instagram: https://www.instagram.com/ramswarooppatra
-  dribbble: https://dribbble.com/ramswaroop
-  linkedin: https://in.linkedin.com/in/ramswarooppatra
-  github: https://www.github.com/ramswaroop
+  facebook: "https://www.facebook.com/ramswaroop"
+  twitter: "https://www.twitter.com/ramswarooppatra"
+  instagram: "https://www.instagram.com/ramswarooppatra"
+  dribbble: "https://dribbble.com/ramswaroop"
+  linkedin: "https://in.linkedin.com/in/ramswarooppatra"
+  github: "https://www.github.com/ramswaroop"
   
