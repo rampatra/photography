@@ -1,7 +1,7 @@
 {
-  "name": "photography",
+  "name": "Photography",
   "version": "1.0.1",
-  "description": "See the world through my eyes!",
+  "description": "A jekyll website for photographer cum developer",
   "main": "npmfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,8 +12,12 @@
   },
   "keywords": [
     "photography",
-    "nikon",
-    "d5600"
+    "jekyll",
+    "website",
+    "template",
+    "website template",
+    "portfolio",
+    "portfolio website"
   ],
   "author": "Ram Patra",
   "license": "MIT",
