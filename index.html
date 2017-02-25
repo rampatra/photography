@@ -23,7 +23,12 @@ layout: default
                     <a href="{{ site.baseurl }}{{ site.image_fulls_loc }}/{{ image.name }}" class="image">
                     <img src="{{ site.baseurl }}{{ site.image_thumbs_loc }}/{{ image.name }}" alt=""/></a>
                     <h2></h2>
-                    <p></p>
+                    <p>
+                        <i class="fa fa-camera-retro" aria-hidden="true"></i> {% exiftag model, {{ site.baseurl }}{{ site.image_fulls_loc}} , {{ image.name }} %} &nbsp;
+                        <i class="fa fa-dot-circle-o" aria-hidden="true"></i> f/{% exiftag f_number.to_f, {{ site.baseurl }}{{ site.image_fulls_loc}} , {{ image.name }} %} &nbsp;
+                        <i class="fa fa-clock-o" aria-hidden="true"></i> {% exiftag exposure_time.to_s, {{ site.baseurl }}{{ site.image_fulls_loc}} , {{ image.name }} %} &nbsp;
+                        <i class="fa fa-info-circle" aria-hidden="true"></i> {% exiftag iso_speed_ratings, {{ site.baseurl }}{{ site.image_fulls_loc}} , {{ image.name }} %}
+                    </p>
                 </article>
             {% endif %}
         {% endfor %}
