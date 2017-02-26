@@ -250,6 +250,11 @@
 									$image.trigger('click');
 								});
 
+					// EXIF data					
+					EXIF.getData($image_img[0], function () {
+						$this.children('p').html(getExifDataMarkup(this));
+					});
+
 				});
 
 			// Poptrox.
@@ -293,7 +298,48 @@
 						.on('+xsmall', function() {
 							$main[0]._poptrox.windowMargin = 0;
 						});
+		
+		function getExifDataMarkup(img) {
+			var exif = fetchExifData(img);
+			var template = '';
+			for (var info in exif) {
+				if (info === "model") {
+					template += '<i class="fa fa-camera-retro" aria-hidden="true"></i> ' + exif["model"] + '&nbsp;';
+				}
+				if (info === "aperture") {
+					template += '<i class="fa fa-dot-circle-o" aria-hidden="true"></i> f/' + exif["aperture"] + '&nbsp;';
+				}
+				if (info === "shutter_speed") {
+					template += '<i class="fa fa-clock-o" aria-hidden="true"></i> ' + exif["shutter_speed"] + '&nbsp;';
+				}
+				if (info === "iso") {
+					template += '<i class="fa fa-info-circle" aria-hidden="true"></i> ' + exif["iso"] + '&nbsp;';
+				}
+			}
+			return template;
+		}
+		
+		function fetchExifData(img) {
+			var exifData = {};
+			
+			if (EXIF.getTag(img, "Model") !== undefined) {
+				exifData.model = EXIF.getTag(img, "Model");
+			}
 
+			if (EXIF.getTag(img, "FNumber") !== undefined) {
+				exifData.aperture = EXIF.getTag(img, "FNumber");
+			}
+
+			if (EXIF.getTag(img, "ExposureTime") !== undefined) {
+				exifData.shutter_speed = EXIF.getTag(img, "ExposureTime");
+			}
+
+			if (EXIF.getTag(img, "ISOSpeedRatings") !== undefined) {
+				exifData.iso = EXIF.getTag(img, "ISOSpeedRatings");
+			}			
+			return exifData;
+		}		
+		
 	});
 
 })(jQuery);
