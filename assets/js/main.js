@@ -215,7 +215,8 @@
         });
 
         // Main.
-        var $main = $('#main');
+        var $main = $('#main'),
+            exifDatas = {};
 
         // Thumbs.
         $main.children('.thumb').each(function () {
@@ -254,7 +255,7 @@
 
             // EXIF data					
             EXIF.getData($image_img[0], function () {
-                $this.children('p').html(getExifDataMarkup(this));
+                exifDatas[$image_img.data('name')] = getExifDataMarkup(this);
             });
 
         });
@@ -263,15 +264,15 @@
         $main.poptrox({
             baseZIndex: 20000,
             caption: function ($a) {
-
-                var s = '';
-
-                $a.nextAll().each(function () {
-                    s += this.outerHTML;
-                });
-
-                return s;
-
+                var $image_img = $a.children('img');
+                var data = exifDatas[$image_img.data('name')];
+                if (data === undefined) {
+                    // EXIF data					
+                    EXIF.getData($image_img[0], function () {
+                        data = exifDatas[$image_img.data('name')] = getExifDataMarkup(this);
+                    });
+                }
+                return data !== undefined ? '<p>' + data + '</p>' : ' ';
             },
             fadeSpeed: 300,
             onPopupClose: function () {

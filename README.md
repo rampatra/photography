@@ -29,7 +29,7 @@ and thumbnail generation__. So if you're lazy like me then you can just do the f
 4. `$ gulp` to resize the images and to generate thumbnails for faster page loads
 5. Push your changes to github.com by `$ git commit -am "a nice commit message"` and then `$ git push origin master`
 
-## Contributors
+## Credits
 Thanks to [AJ](https://twitter.com/ajlkn) for the website template which I enhanced for [jekyll](http://jekyllrb.com/).
 
 
