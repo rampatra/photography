@@ -281,7 +281,6 @@
             onPopupOpen: function () {
                 $body.addClass('modal-active');
             },
-            preload: true,
             overlayOpacity: 0,
             popupCloserText: '',
             popupHeight: 150,
