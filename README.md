@@ -25,11 +25,12 @@ And of course, you don't want my name at the bottom to show up. You can change i
 I have made this as an [npm](https://www.npmjs.com) package with [gulp](http://gulpjs.com/) to __automate image resizing
 and thumbnail generation__. So if you're lazy like me then you can just do the following before you push your images to github.
 
-1. Go inside the project `$ cd photography`
-2. Install all dependencies by `$ npm install`
-3. Copy all your pictures (possibly jpg, the largest size available, straight from your camera) and put it inside `images` directory
-4. Run `$ gulp` to resize the images and to generate thumbnails automatically
-5. Push your changes to github.com by `$ git commit -am "a nice commit message"` and then `$ git push origin master`
+1. Fork and then clone the project to your computer
+2. Go inside the project `$ cd photography`
+3. Install all dependencies by `$ npm install`
+4. Copy all your pictures (possibly jpg, the largest size available, straight from your camera) and put it inside `images` directory
+5. Run `$ gulp` to resize the images and to generate thumbnails automatically
+6. Push your changes to github.com by `$ git commit -am "a nice commit message"` and then `$ git push origin master`
 
 ## Credits
 Thanks to [AJ](https://twitter.com/ajlkn) for the website template which I enhanced for [jekyll](http://jekyllrb.com/).
