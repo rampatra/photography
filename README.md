@@ -16,8 +16,9 @@ it's hosted by GitHub for __free__.
 1. Fork this repo by hitting the `Fork` button at the top right corner.
 2. Enable github pages from the repo settings.
 3. Upload your pictures to `images/fulls` and `images/thumbs` directory. _You can do that on github.com itself or you can clone and push the images to your repo._
-4. Add your own custom domain in `CNAME` file or just remove the file if you don't own a domain. _You can use the default domain that github provides._
-5. And that's it, your website is set. To view, go to [photography.ramswaroop.me](http://photography.ramswaroop.me) (or whatever you have in the CNAME file) and if you don't have one, you can go to [yourusername.github.io/photography](http://yourusername.github.io/photography)
+4. Add your own custom domain in `CNAME` file or just remove the file if you don't own a domain and use the default domain that github provides ([yourusername].github.io/photography).
+5. Update `baseurl` field in `_config.yml` file with whatever domain you used in step 4.
+6. And that's it, your website is set. To view, go to [photography.ramswaroop.me](http://photography.ramswaroop.me) (or whatever you have in the CNAME file) and if you don't have one, you can go to [[yourusername].github.io/photography](http://yourusername.github.io/photography)
 
 And of course, you don't want my name at the bottom to show up. You can change it in `_config.yml` file as well as few other settings like your google analytics etc.
  
