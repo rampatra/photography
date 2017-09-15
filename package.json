@@ -1,6 +1,6 @@
 {
   "name": "photography",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A jekyll website for photographer cum developer",
   "main": "npmfile.js",
   "scripts": {
