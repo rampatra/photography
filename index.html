@@ -7,7 +7,7 @@ layout: default
 
     <!-- Header -->
     <header id="header">
-        <h1><a href="index.html"><strong>Photography</strong> by Ram Patra</a></h1>
+        <h1><a href="index.html"><strong>{{ site.html_title }}</strong> {{ site.html_subtitle }}</a></h1>
         <nav>
             <ul>
                 <li><a href="#footer" class="icon fa-info-circle">About</a></li>
@@ -34,7 +34,7 @@ layout: default
         <div class="inner split">
             <div>
                 <section>
-                    <h2>Hey there, my name is Ram</h2>
+                    <h2>{{ site.about_header }}</h2>
                     <p>{{ site.bio }}</p>
                     <p>{{ site.publicise }}</p>
                 </section>
