@@ -7,6 +7,9 @@
 /* Footer */
 
 	#footer {
+		.ad {
+			max-height: 150px;
+		}
 		.copyright {
 			color: _palette(fg-light);
 			font-size: 0.9em;

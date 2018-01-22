@@ -18,14 +18,15 @@ layout: default
     <!-- Main -->
     <div id="main">
         {% for image in site.static_files %}
-            {% if image.path contains 'fulls' %}
-                <article class="thumb">
-                    <a href="{{ site.baseurl }}{{ site.image_fulls_loc }}/{{ image.name }}" class="image">
-                    <img src="{{ site.baseurl }}{{ site.image_thumbs_loc }}/{{ image.name }}" alt="" data-name="{{ image.name }}"/></a>
-                    <!--<h2></h2>
-                    <p></p>-->
-                </article>
-            {% endif %}
+        {% if image.path contains 'fulls' %}
+        <article class="thumb">
+            <a href="{{ site.baseurl }}{{ site.image_fulls_loc }}/{{ image.name }}" class="image">
+                <img src="{{ site.baseurl }}{{ site.image_thumbs_loc }}/{{ image.name }}" alt=""
+                     data-name="{{ image.name }}"/></a>
+            <!--<h2></h2>
+            <p></p>-->
+        </article>
+        {% endif %}
         {% endfor %}
     </div>
 
@@ -37,6 +38,21 @@ layout: default
                     <h2>Hey there, my name is Ram</h2>
                     <p>{{ site.bio }}</p>
                     <p>{{ site.publicise }}</p>
+                </section>
+                <section>
+                    <h2>Sponsor</h2>
+                    <div class="ad">
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <ins class="adsbygoogle"
+                             style="display:block; text-align:center;"
+                             data-ad-layout="in-article"
+                             data-ad-format="fluid"
+                             data-ad-client="ca-pub-1702577941194110"
+                             data-ad-slot="9823584598"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
                 </section>
                 <section>
                     <h2>Follow me on ...</h2>
