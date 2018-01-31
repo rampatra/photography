@@ -5,7 +5,7 @@ image_thumbs_loc: "/images/thumbs"
 google_analytics: "UA-46465113-2"
 
 # UI configs
-html_title: "Photography by Ram Patra"
+title: "Photography by Ram Patra"
 subtitle: "See the world through my eyes!"
 author: "Ram Patra"
 header:
