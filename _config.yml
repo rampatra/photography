@@ -1,5 +1,5 @@
 # Base configs
-baseurl: "jasonschneider.net"
+baseurl: "https://schnjaso2.github.io/photography/"
 image_fulls_loc: "/images/fulls"
 image_thumbs_loc: "/images/thumbs"
 google_analytics: "UA-128022708-1"
