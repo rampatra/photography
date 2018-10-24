@@ -8,23 +8,23 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ramswaroop/photography.git"
+    "url": "git+https://github.com/schnjaso2/photography.git"
   },
   "keywords": [
     "photography",
     "jekyll",
     "website",
-    "template",
-    "website template",
+    "Art",
+    "Jason Schneider",
     "portfolio",
     "portfolio website"
   ],
-  "author": "Ram Patra",
+  "author": "Jason Schneider",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ramswaroop/photography/issues"
   },
-  "homepage": "https://github.com/ramswaroop/photography#readme",
+  "homepage": "https://github.com/schnjaso2/photography#readme",
   "devDependencies": {
     "del": "^2.2.2",
     "gulp": "^3.9.1",
