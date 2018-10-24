@@ -1,8 +1,8 @@
 # Base configs
-baseurl: "http://schnjaso2.github.io/photography"
+baseurl: "jasonschneider.net"
 image_fulls_loc: "/images/fulls"
 image_thumbs_loc: "/images/thumbs"
-google_analytics: "UA-46465113-2"
+google_analytics: "UA-128022708-1"
 
 # UI configs
 title: "Photography by Jason Schneider"
@@ -12,7 +12,7 @@ header:
  title: "Photography"
  subtitle: "by Jason Schneider"
 footer:
- name: "Hello, I'm Jason"
+ name: "Thanks for Stopping By!"
  bio: "I am a multi-faceted creator of dynamic and cathartic content across a wide spectrum of media formats.: My resume is best viewed Just <a href=\"https://schnjaso2.github.io/jps.github.io/">as a map.</a> ;)"
 web_design: "jps"
 social_urls:
