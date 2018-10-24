@@ -47,11 +47,14 @@ layout: default
                              style="display:block; text-align:center;"
                              data-ad-layout="in-article"
                              data-ad-format="fluid"
-                             data-ad-client="ca-pub-1702577941194110"
+                             data-ad-client="ca-pub-2579639222706513"
                              data-ad-slot="9823584598"></ins>
                         <script>
-                            (adsbygoogle = window.adsbygoogle || []).push({});
-                        </script>
+ 									 (adsbygoogle = window.adsbygoogle || []).push({
+    									google_ad_client: "ca-pub-2579639222706513",
+    									enable_page_level_ads: true
+  											});
+								</script>
                     </div>
                 </section>
                 <section>
@@ -81,7 +84,7 @@ layout: default
                         {% if site.social_urls.soundcloud %}
                             <li>
                                 <a href="{{ site.social_urls.soundcloud }}" class="icon fa-soundcloud">
-                                    <span class="label">Dribbble</span>
+                                    <span class="label">SoundCloud</span>
                                 </a>
                             </li>
                         {% endif %}
