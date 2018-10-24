@@ -81,7 +81,7 @@ layout: default
                         {% if site.social_urls.soundcloud %}
                             <li>
                                 <a href="{{ site.social_urls.soundcloud }}" class="icon fa-soundcloud">
-                                    <span class="label">SoundCloud</span>
+                                    <span class="label">Dribbble</span>
                                 </a>
                             </li>
                         {% endif %}
