@@ -1,5 +1,5 @@
 # Base configs
-baseurl: "http://photography.ramswaroop.me"
+baseurl: "http://photography.rampatra.com"
 image_fulls_loc: "/images/fulls"
 image_thumbs_loc: "/images/thumbs"
 google_analytics: "UA-46465113-2"
@@ -18,8 +18,8 @@ footer:
 web_design: "AJ"
 social_urls:
   facebook: "https://www.facebook.com/ramswaroop"
-  twitter: "https://www.twitter.com/ramswarooppatra"
-  instagram: "https://www.instagram.com/ramswarooppatra"
+  twitter: "https://www.twitter.com/ram__patra"
+  instagram: "https://www.instagram.com/ram_patra"
   dribbble: "https://dribbble.com/ramswaroop"
-  linkedin: "https://in.linkedin.com/in/ramswarooppatra"
-  github: "https://www.github.com/ramswaroop"
+  linkedin: "https://in.linkedin.com/in/ram-patra"
+  github: "https://www.github.com/rampatra"
