@@ -1,5 +1,5 @@
 # Base configs
-baseurl: "http://photography.rampatra.com"
+baseurl: "https://photography.rampatra.com"
 image_fulls_loc: "/images/fulls"
 image_thumbs_loc: "/images/thumbs"
 google_analytics: "UA-46465113-2"
