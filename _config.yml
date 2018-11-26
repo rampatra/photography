@@ -1,5 +1,5 @@
 # Base configs
-baseurl: "https://photography.chipoglesby.com"
+baseurl: "http://photography.chipoglesby.com"
 image_fulls_loc: "/images/fulls"
 image_thumbs_loc: "/images/thumbs"
 google_analytics: "UA-54516992-1"
