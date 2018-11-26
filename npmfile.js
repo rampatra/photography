@@ -1,3 +1,3 @@
 exports.printMsg = function() {
-    console.log("Visit http://photography.ramswaroop.me for a treat!");
+    console.log("Visit http://photography.chipoglesby.com for a treat!");
 };
