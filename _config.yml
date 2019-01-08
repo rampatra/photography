@@ -1,5 +1,5 @@
 # Base configs
-baseurl: "https://cedward.photos"
+baseurl: "https://natecodestx.github.io/cedwardphotos/"
 image_fulls_loc: "/images/fulls"
 image_thumbs_loc: "/images/thumbs"
 google_analytics: "UA-131906452-1"
