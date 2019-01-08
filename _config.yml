@@ -1,25 +1,16 @@
 # Base configs
-baseurl: "https://photography.rampatra.com"
+baseurl: "https://cedward.photos"
 image_fulls_loc: "/images/fulls"
 image_thumbs_loc: "/images/thumbs"
-google_analytics: "UA-46465113-2"
+google_analytics: "UA-131906452-1"
 
 # UI configs
-title: "Photography by Ram Patra"
-subtitle: "See the world through my eyes!"
-author: "Ram Patra"
+title: "Photography by Charles Edward Thrash"
+subtitle: "Birdwatcher"
+author: "Charles Edward Thrash"
 header:
  title: "Photography"
- subtitle: "by Ram Patra"
+ subtitle: "by Charles Edward"
 footer:
- name: "Hey there, my name is Ram"
- bio: "I am a developer and a tech aficionado from India. Love making teeny tiny apps solving tiny problems in life and now learning photography."
- github: "Want a website like this for yourself for free? Just <a href=\"https://github.com/ramswaroop/photography\">fork me on github</a> ;)"
-web_design: "AJ"
-social_urls:
-  facebook: "https://www.facebook.com/ramswaroop"
-  twitter: "https://www.twitter.com/ram__patra"
-  instagram: "https://www.instagram.com/ram_patra"
-  dribbble: "https://dribbble.com/rampatra"
-  linkedin: "https://in.linkedin.com/in/ram-patra"
-  github: "https://www.github.com/rampatra"
+ name: "Hey there, my name is Charles"
+ bio: "I am a bird and nature photographer based in the Pacific Northwest region."
