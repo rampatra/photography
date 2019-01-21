@@ -2,24 +2,29 @@
 baseurl: "https://mattwolfson.github.io/jacobhauptman-photography/"
 image_fulls_loc: "/images/fulls"
 image_thumbs_loc: "/images/thumbs"
-google_analytics: "UA-46465113-2"
+google_analytics:
 
 # UI configs
 title: "Photography by Jacob Hauptman"
 subtitle: "See the world through my eyes!"
 author: "Jacob Hauptman"
+year: "2019"
 header:
  title: "Photography"
  subtitle: "by Jacob Hauptman"
 footer:
- name: "Hey there, my name is Ram"
- bio: "I am a developer and a tech aficionado from India. Love making teeny tiny apps solving tiny problems in life and now learning photography."
- github: "Want a website like this for yourself for free? Just <a href=\"https://github.com/ramswaroop/photography\">fork me on github</a> ;)"
-web_design: "AJ"
+ name: "Hey there, my name is Jacob"
+ bio: "My name is Jacob Hauptman and all of the artwork you see on this site is my original photography. I discovered photography   through my love of travel and exploration.
+
+  From the ancient castle walls of Europe and beautifully decorated pagodas of Southeast Asia to the grassy plains of the US and stunning mountains of Peru, I have had countless adventures where I found myself captivated by unique cultures and landscapes. In New York City, I have found beauty in the alluring architecture of our world-famous skyline and the light shows displayed through the thousands of cars traveling through the streets. Using this extraordinary city as my canvas, I look forward to exploring the parks, avenues, and streets while sharing the splendor it has to offer. I've always had a passion for capturing the beauty of our world - at home and abroad - and sharing that with friends and family. I am so excited to share it with all of you, too! 
+
+  Please take a look at the photos I have posted to this site and let me know if you would like to support me by buying your own print. I am also offering my photography services to help you document the special moments of your life. Thank you for your support and I look forward to helping you bring my photography from around the world closer to your home."
+ github: "Want a website like this for yourself for free? Just <a href=\"https://github.com/ramswaroop/photography\">fork Ram Patra's repo on github</a> ;)"
+web_design: "AJ & Matt Wolfson"
 social_urls:
-  facebook: "https://www.facebook.com/ramswaroop"
-  twitter: "https://www.twitter.com/ram__patra"
-  instagram: "https://www.instagram.com/ram_patra"
-  dribbble: "https://dribbble.com/rampatra"
-  linkedin: "https://in.linkedin.com/in/ram-patra"
-  github: "https://www.github.com/rampatra"
+  facebook: "https://www.facebook.com/jacobhauptmanphoto"
+  twitter:
+  instagram: ";https://www.instagram.com/jacob.hauptman"
+  dribbble:
+  linkedin:
+  github:
