@@ -4,11 +4,12 @@
   "description": "A jekyll website for photographer cum developer",
   "main": "npmfile.js",
   "scripts": {
+    "build": "gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ramswaroop/photography.git"
+    "url": "git+https://github.com/mattwolfson/jacobhauptman-photography.git"
   },
   "keywords": [
     "photography",
@@ -22,9 +23,9 @@
   "author": "Ram Patra",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/ramswaroop/photography/issues"
+    "url": "https://github.com/mattwolfson/jacobhauptman-photography/issues"
   },
-  "homepage": "https://github.com/ramswaroop/photography#readme",
+  "homepage": "https://github.com/mattwolfson/jacobhauptman-photography/#readme",
   "devDependencies": {
     "del": "^2.2.2",
     "gulp": "^3.9.1",
