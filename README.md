@@ -1,4 +1,4 @@
-# Photography [![OpenCollective](https://opencollective.com/photography/tiers/backer/badge.svg?label=backer&color=brightgreen)
+# Photography [![OpenCollective](https://opencollective.com/photography/tiers/backer/badge.svg?label=backer&color=brightgreen)]
 A jekyll website for photographers
 
 ## Highlights
@@ -43,7 +43,7 @@ Thanks to [AJ](https://twitter.com/ajlkn) for the website template which I enhan
 
 Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/photography#backers)]
 
-<a href="https://opencollective.com/photography#backers" target="_blank"><img src="https://opencollective.com/jbot/backers.svg?width=890"></a>
+<a href="https://opencollective.com/photography#backers" target="_blank"><img src="https://opencollective.com/photography/backers.svg?width=890"></a>
 
 ## Sponsors
 
