@@ -1,6 +1,8 @@
 # Photography ![OpenCollective](https://opencollective.com/photography/tiers/backer/badge.svg?label=backer&color=brightgreen)
 A jekyll website for photographers
 
+<img src="https://i.imgur.com/ZG4gSnb.jpeg" alt="demo"/>
+
 ## Highlights
 1. Easy setup and you get a site of your own for __free__.
 2. To add new pictures, you need to just upload them. __No code__ changes required.
