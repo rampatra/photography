@@ -580,11 +580,11 @@
 		}
 
 		.select-wrapper:before {
-			color: #36383c;
+			color: #61646b;
 			content: '\f078';
 			display: block;
 			height: 2.75em;
-			line-height: 2.75em;
+			line-height: 2.1em;
 			pointer-events: none;
 			position: absolute;
 			right: 0;
