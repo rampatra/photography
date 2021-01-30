@@ -53,4 +53,12 @@ Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com
 
 Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/photography#sponsors)]
  
+ <table border="0">
+  <tr>
+   <td>
+    <a href="https://presentify.compzets.com/" target="_blank"><img src="https://presentify.compzets.com/assets/img/presentify/app-icon-512.png" width="150" height="150"></a>
+   </td>
+ </tr>
+</table>
+
 <a href="https://opencollective.com/photography#sponsors" target="_blank"><img src="https://opencollective.com/photography/sponsors.svg?width=890"></a>
