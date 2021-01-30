@@ -59,7 +59,7 @@ Proudly sponsored by [Presentify](http://presentify.compzets.com?ref=GitHub) and
             <a href="https://presentify.compzets.com/" target="_blank"><img src="https://presentify.compzets.com/assets/img/presentify/app-icon-512.png" width="150" height="150"></a>
         </td>
         <td>
-            <a href="https://www.browserstack.com?ref=RamPatra" target="_blank"><img src="https://3fxtqy18kygf3on3bu39kh93-wpengine.netdna-ssl.com/wp-content/uploads/2019/11/browserstack.svg"></a>
+            <a href="https://www.browserstack.com?ref=RamPatra" target="_blank"><img src="https://i.imgur.com/LqI8CO1.png" width="130" height="130"></a>
         </td>
     </tr>
 </table>
