@@ -51,14 +51,17 @@ Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com
 
 ## Sponsors
 
-Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/photography#sponsors)]
- 
- <table border="0">
-  <tr>
-   <td>
-    <a href="https://presentify.compzets.com/" target="_blank"><img src="https://presentify.compzets.com/assets/img/presentify/app-icon-512.png" width="150" height="150"></a>
-   </td>
- </tr>
+Proudly sponsored by [Presentify](http://presentify.compzets.com?ref=GitHub) and [BrowserStack](https://www.browserstack.com?ref=RamPatra). Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/animatescroll#sponsors)]
+
+<table border="0">
+    <tr>
+        <td>
+            <a href="https://presentify.compzets.com/" target="_blank"><img src="https://presentify.compzets.com/assets/img/presentify/app-icon-512.png" width="150" height="150"></a>
+        </td>
+        <td>
+            <a href="https://www.browserstack.com?ref=RamPatra" target="_blank"><img src="https://3fxtqy18kygf3on3bu39kh93-wpengine.netdna-ssl.com/wp-content/uploads/2019/11/browserstack.svg"></a>
+        </td>
+    </tr>
 </table>
 
 <a href="https://opencollective.com/photography#sponsors" target="_blank"><img src="https://opencollective.com/photography/sponsors.svg?width=890"></a>
