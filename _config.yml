@@ -24,6 +24,18 @@ social_urls:
   linkedin: "https://in.linkedin.com/in/ram-patra"
   github: "https://www.github.com/rampatra"
 
+exclude: 
+  - "Gemfile"
+  - "Gemfile.lock"
+  - "vendor"
+  - "CNAME"
+  - "node_modules"
+  - "gulpfile.js"
+  - "npmfile.js"
+  - "package.json"
+  - "package-lock.json"
+  - "README.md"
+
 # Config which exif data to display
 # Tag is the actual exif tag, icon is a fontawesome icon. Use JSON notation without line breaks
 exif_display: '[{"tag": "Model", "icon": "camera-retro"}, {"tag": "FNumber", "icon": "dot-circle-o"}, {"tag": "ExposureTime", "icon": "clock-o"}, {"tag": "ISOSpeedRatings", "icon": "info-circle"}]'
