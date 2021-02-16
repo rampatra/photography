@@ -25,6 +25,7 @@ social_urls:
   github: "https://www.github.com/rampatra"
 
 exclude: 
+  - ".bundle"
   - "Gemfile"
   - "Gemfile.lock"
   - "vendor"
