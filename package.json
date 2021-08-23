@@ -32,9 +32,9 @@
     "gulp-image-resize": "^0.12.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",
-    "gulp-uglify": "^3.0.0"
+    "gulp-uglify": "^3.0.0",
+    "sharp": "^0.28.3"
   },
   "dependencies": {
-    "sharp": "^0.28.3"
   }
 }
