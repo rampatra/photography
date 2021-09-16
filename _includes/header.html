@@ -1,4 +1,12 @@
 <title>{{ site.title }}</title>
+
+<!-- Open Graph support (https://ogp.me/) -->
+<meta property="og:title" content=" {{ site.title }} " />
+<meta property="og:type" content="profile" />
+<meta property="og:description " content="{{ site.footer.name }}" />
+<meta property="og:url" content="{{ site.baseurl }}" />
+<meta property="og:image" content="{{ site.baseurl }}{{ site.image_fulls_loc }}{{ site.og_image }}" />
+
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
 <!--[if lte IE 8]>
