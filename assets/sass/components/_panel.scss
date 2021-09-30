@@ -14,7 +14,7 @@
 		background: transparentize(_palette(bg), 0.025);
 		bottom: _size(header);
 		left: 0;
-		max-height: calc(90vh - #{_size(header)});
+		max-height: calc(95vh - #{_size(header)});
 		overflow-y: auto;
 		position: fixed;
 		width: 100%;
