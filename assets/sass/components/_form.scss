@@ -24,7 +24,9 @@
 		}
 
 		> .actions {
-			margin: (_size(element-margin) * 0.75) 0 0 0 !important;
+			//margin: (_size(element-margin) * 0.75) 0 0 0 !important;
+			display: flex;
+			float: right;
 		}
 
 		@include breakpoint(small) {
@@ -62,7 +64,8 @@
 		background: _palette(border-bg);
 		border: 0;
 		border-radius: 0;
-		color: _palette(fg);
+		color: _palette(fg-medium);
+		font-family: Helvetica, sans-serif;
 		display: block;
 		outline: 0;
 		padding: 0 1em;

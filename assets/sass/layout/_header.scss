@@ -34,7 +34,7 @@
 		h1 {
 			color: _palette(fg);
 			display: inline-block;
-			font-size: 1em;
+			font-size: 2em;
 			line-height: 1;
 			margin: 0;
 			vertical-align: middle;
@@ -68,9 +68,10 @@
 						border: 0;
 						color: _palette(fg-bold);
 						display: inline-block;
-						letter-spacing: _font(kerning-alt);
+						letter-spacing: 2px;//_font(kerning-alt);
 						padding: 0 1.65em;
 						text-transform: uppercase;
+						font-size: 2em;
 
 						&.icon {
 							&:before {
@@ -110,14 +111,14 @@
 			}
 
 			h1 {
-				font-size: 0.9em;
+				font-size: 1.25em;
 			}
 
 			nav {
 				> ul {
 					> li {
 						a {
-							font-size: 0.9em;
+							font-size: 1.25em;
 							padding: 0 1.15em;
 						}
 					}

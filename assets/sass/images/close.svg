@@ -2,7 +2,8 @@
 	<style>
 		line {
 			stroke: #fff;
-			stroke-width: 1.5px;
+			stroke-width: 5px;
+			stroke-linecap: round;
 		}
 	</style>
 	<line x1="20" y1="20" x2="44" y2="44" />

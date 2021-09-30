@@ -53,29 +53,29 @@
 
 // Font.
 	$font: (
-		family:				('Source Sans Pro', Helvetica, sans-serif),
+		family:				('Permanent Marker', Helvetica, sans-serif),
 		family-fixed:		('Courier New', monospace),
-		weight:				300,
-		weight-bold:		300,
-		weight-extrabold:	400,
-		kerning:			0.025em,
-		kerning-alt:		0.1em
+		weight:				100,
+		weight-bold:		400,
+		weight-extrabold:	700,
+		kerning:			'normal',
+		kerning-alt:		'normal'
 	);
 
 // Palette.
 	$palette: (
 		bg:					#242629,
-		bg-alt:				#1f2224,
+		bg-alt:				#141619,
 		bg-overlay:			transparentize(#242629, 0.75),
 		bg-overlay-alt:		transparentize(#242629, 0.5),
 		bg-ie-overlay:		transparentize(#242629, 0.45),
 		bg-ie-overlay-alt:	transparentize(#242629, 0.2),
-		fg:					#a0a0a1,
+		fg:					#ffffff,
 		fg-bold:			#ffffff,
-		fg-medium:			#707071,
-		fg-light:			#505051,
-		border:				#36383c,
-		border-bg:			#34363b,
-		border-bg-alt:		#44464b,
+		fg-medium:			#313131,
+		fg-light:			#ff7300,
+		border:				#f3f3f3,
+		border-bg:			#ffffff,
+		border-bg-alt:		#f700ff,
 		accent1:			#34a58e
 	);

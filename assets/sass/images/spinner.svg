@@ -3,7 +3,7 @@
 		circle {
 			fill: transparent;
 			stroke: #fff;
-			stroke-width: 1.5px;
+			stroke-width: 5px;
 		}
 	</style>
 	<defs>

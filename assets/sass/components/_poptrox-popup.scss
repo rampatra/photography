@@ -45,6 +45,10 @@
 			top: 0;
 			width: 5em;
 			z-index: 2;
+			// &:before{
+			// 	content: "x";
+			// 	font
+			//   }
 		}
 
 		.nav-previous,
@@ -74,15 +78,16 @@
 		}
 
 		.caption {
-			@include padding(2em, 2em);
+			@include padding(0, 1em);
 			@include vendor('background-image', 'linear-gradient(to top, rgba(16,16,16,0.45) 25%, rgba(16,16,16,0) 100%)');
 			bottom: 0;
 			cursor: default;
 			left: 0;
 			position: absolute;
-			text-align: left;
+			text-align: right;
 			width: 100%;
 			z-index: 2;
+			font-family: Helvetica, sans-serif;
 
 			h2, h3, h4, h5, h6 {
 				margin: 0 0 (_size(element-margin) * 0.25) 0;
@@ -90,6 +95,7 @@
 
 			p {
 				color: _palette(fg-bold);
+				margin: 0;
 			}
 		}
 
