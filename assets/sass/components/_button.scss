@@ -24,10 +24,10 @@
 		color: _palette(fg-bold) !important;
 		cursor: pointer;
 		display: inline-block;
-		font-size: 0.9em;
+		font-size: 1.2em;
 		font-weight: _font(weight-bold);
 		height: _size(element-height) * (1 / 0.9);
-		letter-spacing: _font(kerning-alt);
+		letter-spacing: 2px; //_font(kerning-alt);
 		line-height: _size(element-height) * (1 / 0.9);
 		padding: 0 2.5em;
 		text-align: center;
