@@ -11,21 +11,20 @@ fs.readdir(imagesFolder, { withFileTypes: true }, (err, files) => {
 
     let shouldDeleteFile = true
 
-    // // Resize to full
+    // Resize to full
     err = await resize(file.name, 'full')
     if(err) shouldDeleteFile = false
 
-    // // Resize to thumbnail
+    // Resize to thumbnail
     err = await resize(file.name, 'thumb')
     if(err) shouldDeleteFile = false
 
-    // // Delete Original File
+    // Delete Original File
     if( shouldDeleteFile ){
       fs.unlink(imagesFolder + file.name, (err) => {
         if (err) throw err;
       });
     }
-
   });
 });
 
