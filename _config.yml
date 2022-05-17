@@ -1,25 +1,25 @@
 # Base configs
-baseurl: "https://photography.rampatra.com"
+baseurl: "https://rorobig.github.io/saycheese.github.io/"
 image_fulls_loc: "/images/fulls"
 image_thumbs_loc: "/images/thumbs"
 google_analytics: "UA-46465113-2"
 
 # UI configs
-title: "Photography by Ram Patra"
+title: "Photography by Rocheandley Kwidama"
 subtitle: "See the world through my eyes!"
-author: "Ram Patra"
+author: "Rocheandley Kwidama"
 header:
  title: "Photography"
- subtitle: "by Ram Patra"
+ subtitle: "by Rocheandley Kwidama"
 footer:
- name: "Hey there, my name is Ram"
- bio: "I am a developer and a tech aficionado from India. Love making teeny tiny apps solving tiny problems in life and now learning photography."
- github: "Want a website like this for yourself for free? Just <a href=\"https://github.com/ramswaroop/photography\">fork me on github</a> ;)"
-web_design: "AJ"
+ name: "Hey there, my name is Roro"
+ bio: "I am a engineer and a tech aficionado from Curacao. Love everything platform and cybersecurity related and solving tiny problems in life and now learning photography."
+ github: "https://www.github.com/rorobig"
+web_design: "RK"
 social_urls:
   facebook: "https://www.facebook.com/ramswaroop"
   twitter: "https://www.twitter.com/ram__patra"
   instagram: "https://www.instagram.com/ram_patra"
   dribbble: "https://dribbble.com/rampatra"
   linkedin: "https://in.linkedin.com/in/ram-patra"
-  github: "https://www.github.com/rampatra"
+  github: "https://www.github.com/rorobig"
