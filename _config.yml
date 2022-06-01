@@ -5,21 +5,21 @@ image_thumbs_loc: "/images/thumbs"
 google_analytics: "UA-46465113-2"
 
 # UI configs
-title: "Photography by Ram Patra"
-subtitle: "See the world through my eyes!"
-author: "Ram Patra"
+title: "Tattoo designs by Godoistt"
+subtitle: "Thank you for watching."
+author: "Godoistt"
 header:
  title: "Photography"
- subtitle: "by Ram Patra"
+ subtitle: "by Godoistt"
 footer:
- name: "Hey there, my name is Ram"
- bio: "I am a developer and a tech aficionado from India. Love making teeny tiny apps solving tiny problems in life and now learning photography."
+ name: "Hey there, my name is godo"
+ bio: "I am a Tattooist in South Korea. Love own life."
  github: "Want a website like this for yourself for free? Just <a href=\"https://github.com/ramswaroop/photography\">fork me on github</a> ;)"
 web_design: "AJ"
 social_urls:
   facebook: "https://www.facebook.com/ramswaroop"
   twitter: "https://www.twitter.com/ram__patra"
-  instagram: "https://www.instagram.com/ram_patra"
+  instagram: "https://www.instagram.com/godoistt"
   dribbble: "https://dribbble.com/rampatra"
   linkedin: "https://in.linkedin.com/in/ram-patra"
   github: "https://www.github.com/rampatra"
