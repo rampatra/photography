@@ -22,7 +22,7 @@ it's hosted by GitHub for __free__.
 5. Update `baseurl` field in `_config.yml` file with whatever domain you used in step 4.
 6. And that's it, your website is set. To view, go to [photography.rampatra.com](http://photography.rampatra.com) (or whatever you have in the CNAME file) and if you don't have one, you can go to [[yourusername].github.io/photography](http://yourusername.github.io/photography)
 
-And of course, you don't want my name at the bottom to show up. You can change it in `_config.yml` file as well as few other settings like your google analytics etc.
+And, of course, you don't want my name at the bottom to show up. You can change it in `_config.yml` file as well as few other settings like your google analytics, etc.
  
 ## ProTips
 I have made this as an [npm](https://www.npmjs.com) package with [gulp](http://gulpjs.com/) to __automate image resizing
@@ -65,3 +65,7 @@ Proudly sponsored by [Presentify](http://presentify.compzets.com?ref=GitHub) and
 </table>
 
 <a href="https://opencollective.com/photography#sponsors" target="_blank"><img src="https://opencollective.com/photography/sponsors.svg?width=890"></a>
+
+---
+
+_P.S. For any queries or concerns, you can reach out to me on [Twitter](https://twitter.com/ram__patra). I'll try my best to help 🙏._
