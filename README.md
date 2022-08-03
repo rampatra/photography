@@ -7,7 +7,7 @@ While I may make changes, please visit the original webpage and consider support
 
 #### Upload Photos
 
-`npm install`
-Place images in `images` directory
-`gulp`
-Push changes
+1. `npm install`
+2. Place images in `images` directory
+3. `gulp`
+4. Push changes
