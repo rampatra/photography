@@ -2,7 +2,7 @@
 baseurl: "https://sivaprakasaman.github.io/photography"
 image_fulls_loc: "/images/fulls"
 image_thumbs_loc: "/images/thumbs"
-google_analytics: "UA-46465113-2"
+google_analytics: ""
 
 # UI configs
 title: "Photography by Andrew Sivaprakasam"
