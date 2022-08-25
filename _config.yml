@@ -7,14 +7,14 @@ google_analytics: ""
 # UI configs
 title: "Photography by Andrew Sivaprakasam"
 subtitle: "A collection of film and digital work."
-author: "Andrew Sivaprakasam"
+author: "Andrew Sivaprakasam 2022"
 header:
  title: "Photography"
  subtitle: "by Andrew Sivaprakasam"
 footer:
  name: "Thanks for stopping by!"
- bio: "I mostly shoot with an Olympus OMD EM10-Mark II. Sometimes I shoot with a Canon AE-1 film camera, too!"
- github: "Special thanks to Ram Patra <a href=\"https://github.com/ramswaroop/photography\">fork his work on github</a> ;)"
+ bio: "I took most of these photos with an Olympus OMD EM10-Mark II mirrorless camera or a Canon AE-1 film camera. I own the rights to all these images, but am very liberal as far as sharing goes...just ask for permission first!"
+ github: "Special thanks to <a href=\"https://github.com/ramswaroop/photography\">Ram Patra</a>."
 web_design: "AJ"
 social_urls:
 
