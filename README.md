@@ -1,14 +1,19 @@
-<img src="https://i.imgur.com/ZG4gSnb.jpeg" alt="demo"/>
 
-# Photography ![OpenCollective](https://opencollective.com/photography/tiers/backer/badge.svg?label=backer&color=brightgreen)
-A jekyll website for photographers
+
+# Photography
+
+A jekyll website for photographers. This is a modified fork from Ram Patra's really great implementation. My version simply adds a "Back to Main" link in the case this is a subpage, not a main page like it is for me. Additionally, it handles the additional text in the header in a way that prevents overlap on narrow windows/mobile devices.
+
+Finally, I have added a `bash_thumbnail_resize` script to simplify re-sizing for thumbnails. Simply put all your images in `images`, and run the script. The old version used Gulp, and my computer was having issues with some of the dependent packages. 
 
 ## Highlights
+
 1. Easy setup and you get a site of your own for __free__.
 2. To add new pictures, you need to just upload them. __No code__ changes required.
 3. This I like the most, you get to see EXIF data like __aperture, shutter speed, iso__ etc when you click on any image automagically.
 
 ## Quick Start
+
 If you know a tad about tech and love taking pictures then this open-source project may help you setup a website to showcase
 all your creations without effort. And not just that, with this you need not pay a single dime to host your website as
 it's hosted by GitHub for __free__.
@@ -23,8 +28,9 @@ it's hosted by GitHub for __free__.
 6. And that's it, your website is set. To view, go to [photography.rampatra.com](http://photography.rampatra.com) (or whatever you have in the CNAME file) and if you don't have one, you can go to [[yourusername].github.io/photography](http://yourusername.github.io/photography)
 
 And, of course, you don't want my name at the bottom to show up. You can change it in `_config.yml` file as well as few other settings like your google analytics, etc.
- 
+
 ## ProTips
+
 I have made this as an [npm](https://www.npmjs.com) package with [gulp](http://gulpjs.com/) to __automate image resizing
 and thumbnail generation__. So if you're lazy like me then you can just do the following before you push your images to github.
 
@@ -36,9 +42,11 @@ and thumbnail generation__. So if you're lazy like me then you can just do the f
 6. Push your changes to github.com by `$ git add --all` and `$ git commit -m "a nice commit message"` and then finally `$ git push origin master`
 
 ### Contact Form
+
 You can make the contact form work without the need of any server-side code. Just follow this [article on github](https://github.com/dwyl/html-form-send-email-via-google-script-without-server) which uses a simple google script to send emails or to upload to a google spreadsheet when someone submits the form.
 
 ## Credits
+
 Thanks to [AJ](https://twitter.com/ajlkn) for the website template which I enhanced for [jekyll](http://jekyllrb.com/).
 
 ## Backers

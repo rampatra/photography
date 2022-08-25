@@ -175,10 +175,10 @@
 		line-height: 1.65;
 	}
 
-		@media screen and (max-width: 1000px) {
+		@media screen and (max-width: 900px) {
 
 			body, input, select, textarea {
-				font-size: 2vw;
+				font-size: 2.45vw;
 			}
 
 		}
