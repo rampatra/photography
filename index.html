@@ -16,7 +16,7 @@ layout: default
     </header>
 
     <!-- Main -->
-    <div id="main">
+    <div id="main" data-exif-display='{{ site.exif_display }}'>
         {% for image in site.static_files %}
         {% if image.path contains 'fulls' %}
         <article class="thumb">
