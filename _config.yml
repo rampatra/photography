@@ -5,21 +5,16 @@ image_thumbs_loc: "/images/thumbs"
 google_analytics: "UA-46465113-2"
 
 # UI configs
-title: "Photography by Ram Patra"
+title: "Next Chapter Studio"
 subtitle: "See the world through my eyes!"
-author: "Ram Patra"
+author: "Next Chapter Studio"
 header:
  title: "Photography"
- subtitle: "by Ram Patra"
+ subtitle: "by Next Chapter Studio"
 footer:
- name: "Hey there, my name is Ram"
- bio: "I am a developer and a tech aficionado from India. Love making teeny tiny apps solving tiny problems in life and now learning photography."
- github: "Want a website like this for yourself for free? Just <a href=\"https://github.com/ramswaroop/photography\">fork me on github</a> ;)"
+ name: "About Us"
+ bio: "Next Chapter Studio is a Kuala Lumpur, Malaysia based photographic studio specialising in the creation of timeless commercial product photography, corporate and business profile headshots, event photography and also wedding photography. We are a team of professionals dedicated to create photographic masterpieces and we pursue perfection. Our aim is to surpass all of your expectations while providing you with an amazing and unforgettable experience. ​ Through our unique photographic techniques and cutting edge digital retouching technologies, we have worked with world brand leaders such as Ferrari, Mercedes Benz, Nike, Spritzer, Nestle and etc."
 web_design: "AJ"
 social_urls:
-  facebook: "https://www.facebook.com/ramswaroop"
-  twitter: "https://www.twitter.com/ram__patra"
-  instagram: "https://www.instagram.com/ram_patra"
-  dribbble: "https://dribbble.com/rampatra"
-  linkedin: "https://in.linkedin.com/in/ram-patra"
-  github: "https://www.github.com/rampatra"
+  facebook: "https://www.facebook.com/nextchaptermy"
+  instagram: "https://www.instagram.com/nextchapter_my"
