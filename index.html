@@ -17,7 +17,7 @@ layout: default
 
     <!-- Main -->
     <div id="main">
-        {% for image in site.static_files %}
+        {% for image in site.static_files reversed %}
         {% if image.path contains 'fulls' %}
         <article class="thumb">
             <a href="{{ site.baseurl }}{{ site.image_fulls_loc }}/{{ image.name }}" class="image">
