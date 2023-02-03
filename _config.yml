@@ -1,24 +1,24 @@
 # Base configs
-baseurl: "http://photos.angelfluffyookami.ga/"
+baseurl: "http://photos.surprisingly.works/"
 image_fulls_loc: "/images/fulls"
 image_thumbs_loc: "/images/thumbs"
 google_analytics: "UA-46465113-2"
 
 # UI configs
-title: "Photography by AngelFluffyOokami"
+title: "Photography by FuzzPawsOokami"
 subtitle: "My world, seen through your eyes. "
-author: "By Ram Patra"
+author: ""
 header:
  title: ""
  subtitle: "" 
 footer:
  name: "-"
- bio: "FuzzyDazzleOokami!#6719 @ Discord, DazzleOokami @ Twitter, fuzzydazzleookami @ Instagram"
- github: "Want a website like this for yourself for free? Just <a href=\"https://github.com/ramswaroop/photography\">fork me on github</a> ;)"
+ bio: "♡ FuzzPawsOokami! ♡#67199 @ Discord, FuzzPawsOokami @ Twitter, fuzzydazzleookami @ Instagram"
+ github: ""
 web_design: "AJ"
 social_urls:
   facebook: ""
-  twitter: "https://twitter.com/DazzleOokami"
+  twitter: "https://twitter.com/FuzzPawsOokami"
   instagram: "https://www.instagram.com/fuzzydazzleookami/"
   dribbble: ""
   linkedin: ""
