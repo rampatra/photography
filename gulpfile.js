@@ -2,7 +2,10 @@
 
 var gulp = require('gulp');
 var imageResize = require('gulp-image-resize');
-var sass = require('gulp-sass');
+// use gulp-dart-sass instead of gulp-dart
+// bc gulp-dart depends on python2 os dep and node-gyp which is notorious difficult to build
+// https://github.com/dlmanning/gulp-sass/issues/782#issuecomment-754589416
+var sass = require('gulp-dart-sass');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var del = require('del');
