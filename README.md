@@ -22,7 +22,7 @@ it's hosted by GitHub for __free__.
 5. Update `baseurl` field in `_config.yml` file with whatever domain you used in step 4.
 6. And that's it, your website is set. To view, go to [photography.rampatra.com](http://photography.rampatra.com) (or whatever you have in the CNAME file) and if you don't have one, you can go to [[yourusername].github.io/photography](http://yourusername.github.io/photography)
 
-And, of course, you don't want my name at the bottom to show up. You can change it in `_config.yml` file as well as a few other settings like your social links, google analytics, etc. You need to build the website for the changes to reflect and you can do that by running `$ gulp`.
+And, of course, you don't want my name at the bottom to show up. You can change it in `_config.yml` file as well as a few other settings like your social links, google analytics, etc. You need to build the website for the changes to reflect and you can do that by running `$ npm install` and `$ gulp`.
 
 ## Run the website locally to test
 1. `$ cd photography` - go to the project directory
