@@ -35,7 +35,7 @@ And, of course, you don't want my name at the bottom to show up. You can change 
 2. `$ npm install` - install all npm dependencies
 3. `$ gulp` - minify css, js, resize images, etc.
 
-Note: You only need to build the website if you make changes such as changing the images, modifying the css styles, etc.
+Note: You only need to build the website if you make changes such as replacing the images, modifying the css styles, etc.
  
 ## ProTips
 
