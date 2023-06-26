@@ -3,7 +3,7 @@ baseurl: "https://photos.mobeigi.com"
 image_fulls_loc: "/images/fulls"
 image_thumbs_loc: "/images/thumbs"
 google_analytics: "UA-35338966-1"
-exclude: "images/raws"
+exclude: ["images/raws"]
 
 # UI configs
 title: "Lens of Mo Beigi"
