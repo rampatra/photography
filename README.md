@@ -4,7 +4,7 @@
 A jekyll website for photographers
 
 ## Highlights
-1. Easy setup and you get a site of your own for __free__.
+1. Easy setup and you get a website of your own for __free__. No web hosting charges too.
 2. To add new pictures, you need to just upload them. __No code__ changes required.
 3. And, my favorite, you get to see EXIF data like __aperture, shutter speed, iso__ etc. when you click on any image, automagically. Moreover, you can customize this as per your needs.
 
