@@ -66,7 +66,7 @@ Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com
 
 ## Sponsors
 
-Proudly sponsored by [Presentify](http://presentify.compzets.com?ref=GitHub), [ToDoBar](http://todobar.compzets.com?ref=GitHub), and [BrowserStack](https://www.browserstack.com?ref=RamPatra). Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/animatescroll#sponsors)]
+Proudly sponsored by [Presentify](http://presentify.compzets.com?ref=GitHub), [ToDoBar](http://todobar.compzets.com?ref=GitHub), and [BrowserStack](https://www.browserstack.com?ref=RamPatra). Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/photography#sponsors)]
 
 <table>
     <tr>
