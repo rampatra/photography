@@ -7,9 +7,25 @@
 /* Footer */
 
 	#footer {
-		.ad {
-			margin: 0 0 1em 0;
-			max-height: 150px;
+		.presentify {
+			margin: 0 0 1.4em 0;
+			display: flex;
+			justify-content: space-between;
+
+			.presentify-logo {
+				a {
+					border: 0;
+				}
+
+				img {
+					width: 72px;
+					height: 72px;
+				}
+			}
+
+			.presentify-text {
+				padding-top: 10px;
+			}
 		}
 		.copyright {
 			color: _palette(fg-light);

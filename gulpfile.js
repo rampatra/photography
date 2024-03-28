@@ -2,12 +2,16 @@
 
 var gulp = require('gulp');
 var imageResize = require('gulp-image-resize');
-var sass = require('gulp-sass');
+var sass = require('gulp-sass')(require('sass'));
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var del = require('del');
 
-gulp.task('resize', function () {
+gulp.task('delete', function () {
+    return del(['images/*.*']);
+});
+
+gulp.task('resize-images', function () {
     return gulp.src('images/*.*')
         .pipe(imageResize({
             width: 1024,
@@ -19,10 +23,6 @@ gulp.task('resize', function () {
             imageMagick: true
         }))
         .pipe(gulp.dest('images/thumbs'));
-});
-
-gulp.task('del', ['resize'], function () {
-    return del(['images/*.*']);
 });
 
 // compile scss to css
@@ -46,8 +46,11 @@ gulp.task('minify-js', function () {
         .pipe(gulp.dest('./assets/js'));
 });
 
-// default task
-gulp.task('default', ['del']);
+// build task
+gulp.task('build', gulp.series('sass', 'minify-js'));
 
-// scss compile task
-gulp.task('compile-sass', ['sass', 'minify-js']);
+// resize images
+gulp.task('resize', gulp.series('resize-images', 'delete'));
+
+// default task
+gulp.task('default', gulp.series('build', 'resize'));

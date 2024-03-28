@@ -1,5 +1,4 @@
 # Base configs
-baseurl: ""
 image_fulls_loc: "/images/fulls"
 image_thumbs_loc: "/images/thumbs"
 google_analytics: "UA-46465113-2"
@@ -14,10 +13,12 @@ header:
 footer:
  name: "Hey there, my name is Ram"
  bio: "I am a developer and a tech aficionado from India. Love making teeny tiny apps solving tiny problems in life and now learning photography."
- github: "Want a website like this for yourself for free? Just <a href=\"https://github.com/ramswaroop/photography\">fork me on github</a> ;)"
+ github: "Want a website like this for yourself for free? Just <a href=\"https://github.com/ramswaroop/photography\">fork this repo on github</a> ;)"
 web_design: "AJ"
+# Configure which exif data to display
+# Tag is the actual exif tag, icon is a fontawesome icon. Use JSON notation without line breaks
+exif: '[{"tag": "Model", "icon": "camera-retro"}, {"tag": "FNumber", "icon": "dot-circle-o"}, {"tag": "ExposureTime", "icon": "clock-o"}, {"tag": "ISOSpeedRatings", "icon": "info-circle"}]'
 social_urls:
-  facebook: "https://www.facebook.com/ramswaroop"
   twitter: "https://www.twitter.com/ram__patra"
   instagram: "https://www.instagram.com/ram_patra"
   dribbble: "https://dribbble.com/rampatra"
