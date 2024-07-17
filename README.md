@@ -71,10 +71,10 @@ Proudly sponsored by [Presentify](http://presentify.compzets.com?ref=GitHub), [T
 <table>
     <tr>
         <td>
-            <a href="https://presentify.compzets.com/" target="_blank"><img src="https://presentify.compzets.com/assets/img/presentify/app-icon-512.png" width="150" height="150"></a>
+            <a href="https://presentifyapp.com/" target="_blank"><img src="https://presentifyapp.com/assets/img/presentify/app-icon-512.png" width="150" height="150"></a>
         </td>
         <td>
-            <a href="https://todobar.compzets.com/" target="_blank"><img src="https://todobar.compzets.com/assets/img/todobar/app-icon-512.png" width="150" height="150"></a>
+            <a href="https://todobarapp.com/" target="_blank"><img src="https://todobarapp.com/assets/img/todobar/app-icon-512.png" width="150" height="150"></a>
         </td>
         <td>
             <a href="https://www.browserstack.com?ref=RamPatra" target="_blank"><img src="https://i.imgur.com/LqI8CO1.png" width="130" height="130"></a>
