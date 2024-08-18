@@ -27,7 +27,7 @@
 		width: 100%;
 		z-index: _misc(z-index-base) + 2;
 
-		body.loading & {
+		body.is-preload & {
 			@include vendor('transform', 'translateY(#{_size(header)})');
 		}
 
@@ -93,7 +93,7 @@
 		}
 	}
 
-	@include breakpoint(small) {
+	@include breakpoint('<=small') {
 		body {
 			padding: _size(header) 0 0 0;
 		}
@@ -105,7 +105,7 @@
 			padding: 0 1em;
 			top: 0;
 
-			body.loading & {
+			body.is-preload & {
 				@include vendor('transform', 'translateY(#{_size(header) * -0.85})');
 			}
 

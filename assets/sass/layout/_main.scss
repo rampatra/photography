@@ -101,7 +101,7 @@
 			}
 		}
 
-		body.loading & {
+		body.is-preload & {
 			.thumb {
 				@include vendor('pointer-events', 'none');
 				opacity: 0;
@@ -135,7 +135,7 @@
 			);
 
 		// XLarge.
-			@include breakpoint(xlarge) {
+			@include breakpoint('<=xlarge') {
 				@include thumb(
 					_misc(main-layout, xlarge, rows),
 					_misc(main-layout, xlarge, columns),
@@ -145,7 +145,7 @@
 			}
 
 		// Large.
-			@include breakpoint(large) {
+			@include breakpoint('<=large') {
 				@include thumb(
 					_misc(main-layout, large, rows),
 					_misc(main-layout, large, columns),
@@ -155,7 +155,7 @@
 			}
 
 		// Medium.
-			@include breakpoint(medium) {
+			@include breakpoint('<=medium') {
 				@include thumb(
 					_misc(main-layout, medium, rows),
 					_misc(main-layout, medium, columns),
@@ -165,7 +165,7 @@
 			}
 
 		// XSmall.
-			@include breakpoint(xsmall) {
+			@include breakpoint('<=xsmall') {
 				@include thumb(
 					_misc(main-layout, xsmall, rows),
 					_misc(main-layout, xsmall, columns),

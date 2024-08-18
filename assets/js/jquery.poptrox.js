@@ -1,891 +1,489 @@
-/* jquery.poptrox.js v2.5.1 | (c) n33 | n33.co | MIT licensed */
-
-(function($) {
-
-    // Disables selection
-    $.fn.poptrox_disableSelection = function() { return $(this).css('user-select', 'none').css('-khtml-user-select', 'none').css('-moz-user-select', 'none').css('-o-user-select', 'none').css('-webkit-user-select', 'none'); }
-
-    // Poptrox prototype method
-    $.fn.poptrox = function(options) {
-
-        // Handle no elements.
-        if (this.length == 0)
-            return $(this);
-
-        // Handle multiple elements.
-        if (this.length > 1) {
-
-            for (var i=0; i < this.length; i++)
-                $(this[i]).poptrox(options);
-
-            return $(this);
-
-        }
-
-        // Settings
-        var settings = $.extend({
-
-            preload:						false,						// If true, preload fullsize images in the background
-            baseZIndex:						1000,						// Base Z-Index
-            fadeSpeed:						300,						// Global fade speed
-            overlayColor:					'#000000',					// Overlay color
-            overlayOpacity:					0.6,						// Overlay opacity
-            overlayClass:					'poptrox-overlay',			// Overlay class
-            windowMargin:					50,							// Window margin size (in pixels; only comes into play when an image is larger than the viewport)
-            windowHeightPad:				0,							// Window height pad
-            selector:						'a',						// Anchor tag selector
-            caption:						null,						// Caption settings (see docs)
-            parent:							'body',						// Parent selector (ie. where all the popup/overlay stuff gets added).
-            popupSpeed:						300,						// Popup (resize) speed
-            popupWidth:						200,						// Popup width
-            popupHeight:					100,						// Popup height
-            popupIsFixed:					false,						// If true, popup won't resize to fit images
-            useBodyOverflow:				false,						// If true, the BODY tag is set to overflow: hidden when the popup is visible
-            usePopupEasyClose:				true,						// If true, popup can be closed by clicking on it anywhere
-            usePopupForceClose:				false,						// If true, popup can be closed even while content is loading
-            usePopupLoader:					true,						// If true, show the popup loader
-            usePopupCloser:					true,						// If true, show the popup closer button/link
-            usePopupCaption:				false,						// If true, show the popup image caption
-            usePopupNav:					false,						// If true, show (and use) popup navigation
-            usePopupDefaultStyling:			true,						// If true, default popup styling will be applied (background color, text color, etc)
-            popupBackgroundColor:			'#FFFFFF',					// (Default Style) Popup background color (when usePopupStyling = true)
-            popupTextColor:					'#000000',					// (Default Style) Popup text color (when usePopupStyling = true)
-            popupLoaderTextSize:			'2em',						// (Default Style) Popup loader text size
-            popupCloserBackgroundColor:		'#000000',					// (Default Style) Popup closer background color (when usePopupStyling = true)
-            popupCloserTextColor:			'#FFFFFF',					// (Default Style) Popup closer text color (when usePopupStyling = true)
-            popupCloserTextSize:			'20px',						// (Default Style) Popup closer text size
-            popupPadding:					10,							// (Default Style) Popup padding (when usePopupStyling = true)
-            popupCaptionHeight:				60,							// (Default Style) Popup height of caption area
-            popupCaptionTextSize:			null,						// (Default Style) Popup caption text size
-            popupBlankCaptionText:			'(untitled)',				// Applied to images that don't have captions (when captions are enabled)
-            popupCloserText:				'&#215;',					// Popup closer text
-            popupLoaderText:				'&bull;&bull;&bull;&bull;',	// Popup loader text
-            popupClass:						'poptrox-popup',			// Popup class
-            popupSelector:					null,						// (Advanced) Popup selector (use this if you want to replace the built-in popup)
-            popupLoaderSelector:			'.loader',					// (Advanced) Popup Loader selector
-            popupCloserSelector:			'.closer',					// (Advanced) Popup Closer selector
-            popupCaptionSelector:			'.caption',					// (Advanced) Popup Caption selector
-            popupNavPreviousSelector:		'.nav-previous',			// (Advanced) Popup Nav Previous selector
-            popupNavNextSelector:			'.nav-next',				// (Advanced) Popup Nav Next selector
-            onPopupClose:					null,						// Called when popup closes
-            onPopupOpen:					null						// Called when popup opens
-
-        }, options);
-
-        // Variables
-
-        var	$this = $(this),
-            $body = $('body'),
-            $overlay = $('<div class="' + settings.overlayClass +  '"></div>'),
-            $window = $(window);
-
-        var	windowWidth,
-            windowHeight,
-            queue = [],
-            navPos = 0,
-            isLocked = false,
-            cache = new Array();
-
-        function updateWH() {
-
-            windowWidth = $(window).width();
-            windowHeight = $(window).height() + settings.windowHeightPad;
-
-            var dw = Math.abs($popup.width() - $popup.outerWidth()), dh = Math.abs($popup.height() - $popup.outerHeight());
-            var nw = $x.width(), nh = $x.height();
-            var maxw = windowWidth - (settings.windowMargin * 2) - dw, maxh = windowHeight - (settings.windowMargin * 2) - dh;
-
-            $popup
-                .css('min-width', settings.popupWidth)
-                .css('min-height', settings.popupHeight);
-
-            $pic.children()
-                .css('max-width', maxw)
-                .css('max-height', maxh);
-
-        }
-
-        // Disable unused features
-        if (!settings.usePopupLoader)
-            settings.popupLoaderSelector = null;
-
-        if (!settings.usePopupCloser)
-            settings.popupCloserSelector = null;
-
-        if (!settings.usePopupCaption)
-            settings.popupCaptionSelector = null;
-
-        if (!settings.usePopupNav) {
-
-            settings.popupNavPreviousSelector = null;
-            settings.popupNavNextSelector = null;
-
-        }
-
-        // Get popup
-        var $popup;
-
-        if (settings.popupSelector)
-            $popup = $(settings.popupSelector);
-        else
-            $popup = $('<div class="' + settings.popupClass + '">' + (settings.popupLoaderSelector ? '<div class="loader">' + settings.popupLoaderText + '</div>' : '') + '<div class="pic"></div>' + (settings.popupCaptionSelector ? '<div class="caption"></div>' : '') + (settings.popupCloserSelector ? '<span class="closer">' + settings.popupCloserText + '</span>' : '') + (settings.popupNavPreviousSelector ? '<div class="nav-previous"></div>' : '') + (settings.popupNavNextSelector ? '<div class="nav-next"></div>' : '') + '</div>');
-
-        // Get popup components
-        var	$pic = $popup.find('.pic'),
-            $x = $(),
-            $loader = $popup.find(settings.popupLoaderSelector),
-            $caption = $popup.find(settings.popupCaptionSelector),
-            $closer = $popup.find(settings.popupCloserSelector),
-            $nav_next = $popup.find(settings.popupNavNextSelector),
-            $nav_previous = $popup.find(settings.popupNavPreviousSelector),
-            $nav = $nav_next.add($nav_previous);
-
-        // Apply default styling?
-        if (settings.usePopupDefaultStyling) {
-
-            $popup
-                .css('background', settings.popupBackgroundColor)
-                .css('color', settings.popupTextColor)
-                .css('padding', settings.popupPadding + 'px');
-
-            if ($caption.length > 0) {
-
-                $popup
-                    .css('padding-bottom', settings.popupCaptionHeight + 'px');
-
-                $caption
-                    .css('position', 'absolute')
-                    .css('left', '0')
-                    .css('bottom', '0')
-                    .css('width', '100%')
-                    .css('text-align', 'center')
-                    .css('height', settings.popupCaptionHeight + 'px')
-                    .css('line-height', settings.popupCaptionHeight + 'px');
-
-                if (settings.popupCaptionTextSize)
-                    $caption.css('font-size', popupCaptionTextSize);
-
+/* jquery.poptrox.js v2.5.2-dev | (c) @ajlkn | github.com/ajlkn/jquery.poptrox | MIT licensed
+  Modified to add lazy loading for caption. See comments for 'Lazy load captions'.
+  Unfortunately, the source is minified for the v2.5.2-dev version.
+*/
+!(function (e) {
+    (e.fn.poptrox_disableSelection = function () {
+        return e(this).css("user-select", "none").css("-khtml-user-select", "none").css("-moz-user-select", "none").css("-o-user-select", "none").css("-webkit-user-select", "none");
+    }),
+        (e.fn.poptrox = function (o) {
+            if (0 == this.length) return e(this);
+            if (this.length > 1) {
+                for (var t = 0; t < this.length; t++) e(this[t]).poptrox(o);
+                return e(this);
             }
-
-            if ($closer.length > 0)
-                $closer
-                    .html(settings.popupCloserText)
-                    .css('font-size', settings.popupCloserTextSize)
-                    .css('background', settings.popupCloserBackgroundColor)
-                    .css('color', settings.popupCloserTextColor)
-                    .css('display', 'block')
-                    .css('width', '40px')
-                    .css('height', '40px')
-                    .css('line-height', '40px')
-                    .css('text-align', 'center')
-                    .css('position', 'absolute')
-                    .css('text-decoration', 'none')
-                    .css('outline', '0')
-                    .css('top', '0')
-                    .css('right', '-40px');
-
-            if ($loader.length > 0) {
-
-                $loader
-                    .html('')
-                    .css('position', 'relative')
-                    .css('font-size', settings.popupLoaderTextSize)
-                    .on('startSpinning', function(e) {
-
-                        var x = $('<div>' + settings.popupLoaderText + '</div>');
-
-                        x
-                            .css('height', Math.floor(settings.popupHeight / 2) + 'px')
-                            .css('overflow', 'hidden')
-                            .css('line-height', Math.floor(settings.popupHeight / 2) + 'px')
-                            .css('text-align', 'center')
-                            .css('margin-top', Math.floor(($popup.height() - x.height() + ($caption.length > 0 ? $caption.height() : 0)) / 2))
-                            .css('color', (settings.popupTextColor ? settings.popupTextColor : ''))
-                            .on('xfin', function() { x.fadeTo(300, 0.5, function() { x.trigger('xfout'); }); })
-                            .on('xfout', function() { x.fadeTo(300, 0.05, function() { x.trigger('xfin'); }); })
-                            .trigger('xfin');
-
-                        $loader.append(x);
-
-                    })
-                    .on('stopSpinning', function(e) {
-
-                        var x = $loader.find('div');
-                        x.remove();
-
-                    });
-
-            }
-
-            if ($nav.length == 2) {
-
-                $nav
-                    .css('font-size', '75px')
-                    .css('text-align', 'center')
-                    .css('color', '#fff')
-                    .css('text-shadow', 'none')
-                    .css('height', '100%')
-                    .css('position', 'absolute')
-                    .css('top', '0')
-                    .css('opacity', '0.35')
-                    .css('cursor', 'pointer')
-                    .css('box-shadow', 'inset 0px 0px 10px 0px rgba(0,0,0,0)')
+            var p,
+                i,
+                s = e.extend(
+                    {
+                        preload: !1,
+                        baseZIndex: 1e3,
+                        fadeSpeed: 300,
+                        overlayColor: "#000000",
+                        overlayOpacity: 0.6,
+                        overlayClass: "poptrox-overlay",
+                        windowMargin: 50,
+                        windowHeightPad: 0,
+                        selector: "a",
+                        caption: null,
+                        parent: "body",
+                        popupSpeed: 300,
+                        popupWidth: 200,
+                        popupHeight: 100,
+                        popupIsFixed: !1,
+                        useBodyOverflow: !1,
+                        usePopupEasyClose: !0,
+                        usePopupForceClose: !1,
+                        usePopupLoader: !0,
+                        usePopupCloser: !0,
+                        usePopupCaption: !1,
+                        usePopupNav: !1,
+                        usePopupDefaultStyling: !0,
+                        popupBackgroundColor: "#FFFFFF",
+                        popupTextColor: "#000000",
+                        popupLoaderTextSize: "2em",
+                        popupCloserBackgroundColor: "#000000",
+                        popupCloserTextColor: "#FFFFFF",
+                        popupCloserTextSize: "20px",
+                        popupPadding: 10,
+                        popupCaptionHeight: 60,
+                        popupCaptionTextSize: null,
+                        popupBlankCaptionText: "(untitled)",
+                        popupCloserText: "&#215;",
+                        popupLoaderText: "&bull;&bull;&bull;&bull;",
+                        popupClass: "poptrox-popup",
+                        popupSelector: null,
+                        popupLoaderSelector: ".loader",
+                        popupCloserSelector: ".closer",
+                        popupCaptionSelector: ".caption",
+                        popupNavPreviousSelector: ".nav-previous",
+                        popupNavNextSelector: ".nav-next",
+                        onPopupClose: null,
+                        onPopupOpen: null,
+                    },
+                    o
+                ),
+                r = e(this),
+                n = e("body"),
+                a = e('<div class="' + s.overlayClass + '"></div>'),
+                l = e(window),
+                u = [],
+                d = 0,
+                h = !1,
+                g = new Array(),
+                f = function () {
+                    (p = l.width()), (i = l.height() + s.windowHeightPad);
+                    var e = Math.abs(x.width() - x.outerWidth()),
+                        o = Math.abs(x.height() - x.outerHeight()),
+                        t = p - 2 * s.windowMargin - e,
+                        r = i - 2 * s.windowMargin - o;
+                    x.css("min-width", s.popupWidth).css("min-height", s.popupHeight), v.children().css("max-width", t).css("max-height", r);
+                };
+            s.usePopupLoader || (s.popupLoaderSelector = null),
+                s.usePopupCloser || (s.popupCloserSelector = null),
+                s.usePopupCaption || (s.popupCaptionSelector = null),
+                s.usePopupNav || ((s.popupNavPreviousSelector = null), (s.popupNavNextSelector = null));
+            var x;
+            x = e(
+                s.popupSelector
+                    ? s.popupSelector
+                    : '<div class="' +
+                          s.popupClass +
+                          '">' +
+                          (s.popupLoaderSelector ? '<div class="loader">' + s.popupLoaderText + "</div>" : "") +
+                          '<div class="pic"></div>' +
+                          (s.popupCaptionSelector ? '<div class="caption"></div>' : "") +
+                          (s.popupCloserSelector ? '<span class="closer">' + s.popupCloserText + "</span>" : "") +
+                          (s.popupNavPreviousSelector ? '<div class="nav-previous"></div>' : "") +
+                          (s.popupNavNextSelector ? '<div class="nav-next"></div>' : "") +
+                          "</div>"
+            );
+            var v = x.find(".pic"),
+                w = e(),
+                b = x.find(s.popupLoaderSelector),
+                m = x.find(s.popupCaptionSelector),
+                C = x.find(s.popupCloserSelector),
+                y = x.find(s.popupNavNextSelector),
+                S = x.find(s.popupNavPreviousSelector),
+                P = y.add(S);
+            if (
+                s.usePopupDefaultStyling &&
+                (x
+                    .css("background", s.popupBackgroundColor)
+                    .css("color", s.popupTextColor)
+                    .css("padding", s.popupPadding + "px"),
+                m.length > 0 &&
+                    (x.css("padding-bottom", s.popupCaptionHeight + "px"),
+                    m
+                        .css("position", "absolute")
+                        .css("left", "0")
+                        .css("bottom", "0")
+                        .css("width", "100%")
+                        .css("text-align", "center")
+                        .css("height", s.popupCaptionHeight + "px")
+                        .css("line-height", s.popupCaptionHeight + "px"),
+                    s.popupCaptionTextSize && m.css("font-size", popupCaptionTextSize)),
+                C.length > 0 &&
+                    C.html(s.popupCloserText)
+                        .css("font-size", s.popupCloserTextSize)
+                        .css("background", s.popupCloserBackgroundColor)
+                        .css("color", s.popupCloserTextColor)
+                        .css("display", "block")
+                        .css("width", "40px")
+                        .css("height", "40px")
+                        .css("line-height", "40px")
+                        .css("text-align", "center")
+                        .css("position", "absolute")
+                        .css("text-decoration", "none")
+                        .css("outline", "0")
+                        .css("top", "0")
+                        .css("right", "-40px"),
+                b.length > 0 &&
+                    b
+                        .html("")
+                        .css("position", "relative")
+                        .css("font-size", s.popupLoaderTextSize)
+                        .on("startSpinning", function (o) {
+                            var t = e("<div>" + s.popupLoaderText + "</div>");
+                            t
+                                .css("height", Math.floor(s.popupHeight / 2) + "px")
+                                .css("overflow", "hidden")
+                                .css("line-height", Math.floor(s.popupHeight / 2) + "px")
+                                .css("text-align", "center")
+                                .css("margin-top", Math.floor((x.height() - t.height() + (m.length > 0 ? m.height() : 0)) / 2))
+                                .css("color", s.popupTextColor ? s.popupTextColor : "")
+                                .on("xfin", function () {
+                                    t.fadeTo(300, 0.5, function () {
+                                        t.trigger("xfout");
+                                    });
+                                })
+                                .on("xfout", function () {
+                                    t.fadeTo(300, 0.05, function () {
+                                        t.trigger("xfin");
+                                    });
+                                })
+                                .trigger("xfin"),
+                                b.append(t);
+                        })
+                        .on("stopSpinning", function (e) {
+                            var o = b.find("div");
+                            o.remove();
+                        }),
+                2 == P.length)
+            ) {
+                P.css("font-size", "75px")
+                    .css("text-align", "center")
+                    .css("color", "#fff")
+                    .css("text-shadow", "none")
+                    .css("height", "100%")
+                    .css("position", "absolute")
+                    .css("top", "0")
+                    .css("opacity", "0.35")
+                    .css("cursor", "pointer")
+                    .css("box-shadow", "inset 0px 0px 10px 0px rgba(0,0,0,0)")
                     .poptrox_disableSelection();
-
-                var wn, wp;
-
-                if (settings.usePopupEasyClose) {
-
-                    wn = '100px';
-                    wp = '100px';
-
-                }
-                else {
-
-                    wn = '75%';
-                    wp = '25%';
-
-                }
-
-                $nav_next
-                    .css('right', '0')
-                    .css('width', wn)
-                    .html('<div style="position: absolute; height: 100px; width: 125px; top: 50%; right: 0; margin-top: -50px;">&gt;</div>');
-
-                $nav_previous
-                    .css('left', '0')
-                    .css('width', wp)
-                    .html('<div style="position: absolute; height: 100px; width: 125px; top: 50%; left: 0; margin-top: -50px;">&lt;</div>');
-
+                var k, T;
+                s.usePopupEasyClose ? ((k = "100px"), (T = "100px")) : ((k = "75%"), (T = "25%")),
+                    y.css("right", "0").css("width", k).html('<div style="position: absolute; height: 100px; width: 125px; top: 50%; right: 0; margin-top: -50px;">&gt;</div>'),
+                    S.css("left", "0").css("width", T).html('<div style="position: absolute; height: 100px; width: 125px; top: 50%; left: 0; margin-top: -50px;">&lt;</div>');
             }
-
-        }
-
-        // Main
-        $window
-            .on('resize orientationchange', function() {
-                updateWH();
-            });
-
-        $caption
-            .on('update', function(e, s) {
-
-                if (!s || s.length == 0)
-                    s = settings.popupBlankCaptionText;
-
-                $caption.html(s);
-
-            });
-
-        $closer
-            .css('cursor', 'pointer')
-            .on('click', function(e) {
-
-                e.preventDefault();
-                e.stopPropagation();
-
-                $popup.trigger('poptrox_close');
-
-                return true;
-
-            });
-
-        $nav_next
-            .on('click', function(e) {
-
-                e.stopPropagation();
-                e.preventDefault();
-                $popup.trigger('poptrox_next');
-
-            });
-
-        $nav_previous
-            .on('click', function(e) {
-
-                e.stopPropagation();
-                e.preventDefault();
-                $popup.trigger('poptrox_previous');
-
-            });
-
-        $overlay
-            .css('position', 'fixed')
-            .css('left', 0)
-            .css('top', 0)
-            .css('z-index', settings.baseZIndex)
-            .css('width', '100%')
-            .css('height', '100%')
-            .css('text-align', 'center')
-            .css('cursor', 'pointer')
-            .appendTo(settings.parent)
-            .prepend('<div style="display:inline-block;height:100%;vertical-align:middle;"></div>')
-            .append('<div style="position:absolute;left:0;top:0;width:100%;height:100%;background:' + settings.overlayColor + ';opacity:' + settings.overlayOpacity + ';filter:alpha(opacity=' + (settings.overlayOpacity * 100) + ');"></div>')
-            .hide()
-            .on('touchmove', function(e) {
-                return false;
-            })
-            .on('click', function(e) {
-
-                e.preventDefault();
-                e.stopPropagation();
-
-                $popup.trigger('poptrox_close');
-
-            });
-
-        $popup
-            .css('display', 'inline-block')
-            .css('vertical-align', 'middle')
-            .css('position', 'relative')
-            .css('z-index', 1)
-            .css('cursor', 'auto')
-            .appendTo($overlay)
-            .hide()
-            .on('poptrox_next', function() {
-
-                var x = navPos + 1;
-
-                if (x >= queue.length)
-                    x = 0;
-
-                $popup.trigger('poptrox_switch', [x]);
-
-            })
-            .on('poptrox_previous', function() {
-
-                var x = navPos - 1;
-
-                if (x < 0)
-                    x = queue.length - 1;
-
-                $popup.trigger('poptrox_switch', [x]);
-
-            })
-            .on('poptrox_reset', function() {
-
-                updateWH();
-
-                $popup
-                    .data('width', settings.popupWidth)
-                    .data('height', settings.popupHeight);
-
-                $loader.hide().trigger('stopSpinning');
-                $caption.hide();
-                $closer.hide();
-                $nav.hide();
-                $pic.hide();
-
-                $x
-                    .attr('src', '')
-                    .detach();
-
-            })
-            .on('poptrox_open', function(e, index) {
-
-                if (isLocked)
-                    return true;
-
-                isLocked = true;
-
-                if (settings.useBodyOverflow)
-                    $body.css('overflow', 'hidden');
-
-                if (settings.onPopupOpen)
-                    (settings.onPopupOpen)();
-
-                $overlay
-                    .fadeTo(settings.fadeSpeed, 1.0, function() {
-                        $popup.trigger('poptrox_switch', [index, true]);
-                    });
-
-            })
-            .on('poptrox_switch', function(e, index, ignoreLock) {
-
-                var x, img, c;
-
-                if (!ignoreLock && isLocked)
-                    return true;
-
-                isLocked = true;
-
-                $popup
-                    .css('width', $popup.data('width'))
-                    .css('height', $popup.data('height'));
-
-                // Cleanup from previous
-                $caption.hide();
-                if ($x.attr('src'))
-                    $x.attr('src', '');
-                $x.detach();
-
-                // Activate new object
-                x = queue[index];
-                $x = x.object;
-                $x.off('load');
-
-                $pic
-                    .css('text-indent', '-9999px')
-                    .show()
-                    .append($x);
-
-                if (x.type == 'ajax')
-                    $.get(x.src, function(data) {
-
-                        $x.html(data);
-                        $x.trigger('load');
-
-                    });
-                else
-                    $x.attr('src', x.src);
-
-                if (x.type != 'image') {
-
-                    var xwidth, xheight;
-
-                    xwidth = x.width;
-                    xheight = x.height;
-
-                    if (xwidth.slice(-1) == '%')
-                        xwidth = (parseInt(xwidth.substring(0, xwidth.length - 1)) / 100.00) * $window.width();
-
-                    if (xheight.slice(-1) == '%')
-                        xheight = (parseInt(xheight.substring(0, xheight.length - 1)) / 100.00) * $window.height();
-
-                    $x
-                        .css('position', 'relative')
-                        .css('outline', '0')
-                        .css('z-index', settings.baseZIndex + 100)
-                        .width(xwidth)
-                        .height(xheight);
-
-                }
-
-                // Initialize
-                $loader.trigger('startSpinning').fadeIn(300);
-                $popup.show();
-
-                if (settings.popupIsFixed) {
-
-                    $popup
-                        .width(settings.popupWidth)
-                        .height(settings.popupHeight);
-
-                    $x.load(function() {
-
-                        $x.off('load');
-                        $loader.hide().trigger('stopSpinning');
-                        
-                        // lazy load captions
-                        if (typeof(settings.caption) == 'function') {
-                            c = (settings.caption)(x.a);
-                        } else {
-                            c = x.captionText;
-                        }
-                        
-                        $caption.trigger('update', [c]).fadeIn(settings.fadeSpeed);
-                        $closer.fadeIn(settings.fadeSpeed);
-                        $pic.css('text-indent', 0).hide().fadeIn(settings.fadeSpeed, function() { isLocked = false; });
-                        navPos = index;
-                        $nav.fadeIn(settings.fadeSpeed);
-
-                    });
-
-                }
-                else {
-
-                    $x.load(function() {
-
-                        updateWH();
-
-                        $x.off('load');
-                        $loader.hide().trigger('stopSpinning');
-
-                        var	nw = $x.width(),
-                            nh = $x.height(),
-                            f = function() {
-
-                                // lazy load captions
-                                if (typeof(settings.caption) == 'function') {
-                                    c = (settings.caption)(x.a);
-                                } else {
-                                    c = x.captionText;
-                                }
-
-                                $caption.trigger('update', [c]).fadeIn(settings.fadeSpeed);
-                                $closer.fadeIn(settings.fadeSpeed);
-                                $pic.css('text-indent', 0).hide().fadeIn(settings.fadeSpeed, function() { isLocked = false; });
-                                navPos = index;
-                                $nav.fadeIn(settings.fadeSpeed);
-
-                                $popup
-                                    .data('width', nw)
-                                    .data('height', nh)
-                                    .css('width', 'auto')
-                                    .css('height', 'auto');
-
-                            };
-
-                        if (nw == $popup.data('width')
-                            &&	nh == $popup.data('height'))
-                            (f)();
-                        else
-                            $popup.animate({ width: nw, height: nh }, settings.popupSpeed, 'swing', f);
-
-                    });
-
-                }
-
-                if (x.type != 'image')
-                    $x.trigger('load');
-
-            })
-            .on('poptrox_close', function() {
-
-                if (isLocked
-                    &&	!settings.usePopupForceClose)
-                    return true;
-
-                isLocked = true;
-
-                $popup
+            return (
+                l.on("resize orientationchange", function () {
+                    f();
+                }),
+                m.on("update", function (e, o) {
+                    (o && 0 != o.length) || (o = s.popupBlankCaptionText), m.html(o);
+                }),
+                C.css("cursor", "pointer").on("click", function (e) {
+                    return e.preventDefault(), e.stopPropagation(), x.trigger("poptrox_close"), !0;
+                }),
+                y.on("click", function (e) {
+                    e.stopPropagation(), e.preventDefault(), x.trigger("poptrox_next");
+                }),
+                S.on("click", function (e) {
+                    e.stopPropagation(), e.preventDefault(), x.trigger("poptrox_previous");
+                }),
+                a
+                    .css("position", "fixed")
+                    .css("left", 0)
+                    .css("top", 0)
+                    .css("z-index", s.baseZIndex)
+                    .css("width", "100%")
+                    .css("height", "100%")
+                    .css("text-align", "center")
+                    .css("cursor", "pointer")
+                    .appendTo(s.parent)
+                    .prepend('<div style="display:inline-block;height:100%;vertical-align:middle;"></div>')
+                    .append('<div style="position:absolute;left:0;top:0;width:100%;height:100%;background:' + s.overlayColor + ";opacity:" + s.overlayOpacity + ";filter:alpha(opacity=" + 100 * s.overlayOpacity + ');"></div>')
                     .hide()
-                    .trigger('poptrox_reset');
+                    .on("touchmove", function (e) {
+                        return !1;
+                    })
+                    .on("click", function (e) {
+                        e.preventDefault(), e.stopPropagation(), x.trigger("poptrox_close");
+                    }),
+                x
+                    .css("display", "inline-block")
+                    .css("vertical-align", "middle")
+                    .css("position", "relative")
+                    .css("z-index", 1)
+                    .css("cursor", "auto")
+                    .appendTo(a)
+                    .hide()
+                    .on("poptrox_next", function () {
+                        var e = d + 1;
+                        e >= u.length && (e = 0), x.trigger("poptrox_switch", [e]);
+                    })
+                    .on("poptrox_previous", function () {
+                        var e = d - 1;
+                        e < 0 && (e = u.length - 1), x.trigger("poptrox_switch", [e]);
+                    })
+                    .on("poptrox_reset", function () {
+                        f(), x.data("width", s.popupWidth).data("height", s.popupHeight), b.hide().trigger("stopSpinning"), m.hide(), C.hide(), P.hide(), v.hide(), w.attr("src", "").detach();
+                    })
+                    .on("poptrox_open", function (e, o) {
+                        return (
+                            !!h ||
+                            ((h = !0),
+                            s.useBodyOverflow && n.css("overflow", "hidden"),
+                            s.onPopupOpen && s.onPopupOpen(),
+                            x.addClass("loading"),
+                            void a.fadeTo(s.fadeSpeed, 1, function () {
+                                x.trigger("poptrox_switch", [o, !0]);
+                            }))
+                        );
+                    })
+                    .on("poptrox_switch", function (o, t, p) {
+                        var i;
 
-                if (settings.onPopupClose)
-                    (settings.onPopupClose)();
+                        // Lazy load captions
+                        var lazyC;
 
-                $overlay
-                    .fadeOut(settings.fadeSpeed, function() {
+                        if (!p && h) return !0;
+                        if (
+                            ((h = !0),
+                            x.addClass("loading").css("width", x.data("width")).css("height", x.data("height")),
+                            m.hide(),
+                            w.attr("src") && w.attr("src", ""),
+                            w.detach(),
+                            (i = u[t]),
+                            (w = i.object),
+                            w.off("load"),
+                            v.css("text-indent", "-9999px").show().append(w),
+                            "ajax" == i.type
+                                ? e.get(i.src, function (e) {
+                                      w.html(e), w.trigger("load");
+                                  })
+                                : w.attr("src", i.src),
+                            "image" != i.type)
+                        ) {
+                            var r, n;
+                            (r = i.width),
+                                (n = i.height),
+                                "%" == r.slice(-1) && (r = (parseInt(r.substring(0, r.length - 1)) / 100) * l.width()),
+                                "%" == n.slice(-1) && (n = (parseInt(n.substring(0, n.length - 1)) / 100) * l.height()),
+                                w
+                                    .css("position", "relative")
+                                    .css("outline", "0")
+                                    .css("z-index", s.baseZIndex + 100)
+                                    .width(r)
+                                    .height(n);
+                        }
+                        b.trigger("startSpinning").fadeIn(300),
+                            x.show(),
+                            s.popupIsFixed
+                                ? (x.removeClass("loading").width(s.popupWidth).height(s.popupHeight),
+                                  w.on("load", function () {
+                                    w.off("load");
+                                    b.hide().trigger("stopSpinning");
+                                    
+                                    // Lazy load captions
+                                    if (typeof s.caption == "function") {
+                                        lazyC = s.caption(i.a);
+                                    } else {
+                                        lazyC = i.captionText;
+                                    }
+                                    m.trigger("update", [lazyC]).fadeIn(s.fadeSpeed);
 
-                        if (settings.useBodyOverflow)
-                            $body.css('overflow', 'auto');
+                                    C.fadeIn(s.fadeSpeed);
+                                    v.css("text-indent", 0)
+                                        .hide()
+                                        .fadeIn(s.fadeSpeed, function () {
+                                            h = !1;
+                                        });
+                                    d = t;
+                                    P.fadeIn(s.fadeSpeed);
+                                  }))
+                                : w.on("load", function () {
+                                      f(), w.off("load"), b.hide().trigger("stopSpinning");
+                                      var e = w.width(),
+                                          o = w.height(),
+                                          p = function () {
+                                                // Lazy load captions
+                                                if (typeof s.caption == "function") {
+                                                    lazyC = s.caption(i.a);
+                                                } else {
+                                                    lazyC = i.captionText;
+                                                }
+                                                m.trigger("update", [lazyC]).fadeIn(s.fadeSpeed);
 
-                        isLocked = false;
-
-                    });
-
-            })
-            .trigger('poptrox_reset');
-
-        // Easy close.
-        if (settings.usePopupEasyClose) {
-
-            $caption.on('click', 'a', function(e) {
-                e.stopPropagation();
-            });
-
-            $popup
-                .css('cursor', 'pointer')
-                .on('click', function(e) {
-
-                    e.stopPropagation();
-                    e.preventDefault();
-
-                    $popup.trigger('poptrox_close');
-
-                });
-        }
-        else
-            $popup
-                .on('click', function(e) {
-                    e.stopPropagation();
-                });
-
-        $window
-            .keydown(function(e) {
-
-                if ($popup.is(':visible')) {
-
-                    switch (e.keyCode) {
-
-                        case 37:
-                        case 32:
-
-                            if (settings.usePopupNav) {
-
-                                $popup.trigger('poptrox_previous');
-                                return false;
-
+                                                C.fadeIn(s.fadeSpeed),
+                                                v
+                                                    .css("text-indent", 0)
+                                                    .hide()
+                                                    .fadeIn(s.fadeSpeed, function () {
+                                                        h = !1;
+                                                    }),
+                                                (d = t),
+                                                P.fadeIn(s.fadeSpeed),
+                                                x.removeClass("loading").data("width", e).data("height", o).css("width", "auto").css("height", "auto");
+                                          };
+                                      e == x.data("width") && o == x.data("height") ? p() : x.animate({ width: e, height: o }, s.popupSpeed, "swing", p);
+                                  }),
+                            "image" != i.type && w.trigger("load");
+                    })
+                    .on("poptrox_close", function () {
+                        return (
+                            !(!h || s.usePopupForceClose) ||
+                            ((h = !0),
+                            x.hide().trigger("poptrox_reset"),
+                            s.onPopupClose && s.onPopupClose(),
+                            void a.fadeOut(s.fadeSpeed, function () {
+                                s.useBodyOverflow && n.css("overflow", "auto"), (h = !1);
+                            }))
+                        );
+                    })
+                    .trigger("poptrox_reset"),
+                s.usePopupEasyClose
+                    ? (m.on("click", "a", function (e) {
+                          e.stopPropagation();
+                      }),
+                      x.css("cursor", "pointer").on("click", function (e) {
+                          e.stopPropagation(), e.preventDefault(), x.trigger("poptrox_close");
+                      }))
+                    : x.on("click", function (e) {
+                          e.stopPropagation();
+                      }),
+                l.keydown(function (e) {
+                    if (x.is(":visible"))
+                        switch (e.keyCode) {
+                            case 37:
+                            case 32:
+                                if (s.usePopupNav) return x.trigger("poptrox_previous"), !1;
+                                break;
+                            case 39:
+                                if (s.usePopupNav) return x.trigger("poptrox_next"), !1;
+                                break;
+                            case 27:
+                                return x.trigger("poptrox_close"), !1;
+                        }
+                }),
+                r.find(s.selector).each(function (o) {
+                    var t,
+                        p,
+                        i = e(this),
+                        r = i.find("img"),
+                        n = i.data("poptrox");
+                    if ("ignore" != n && i.attr("href")) {
+                        // Lazy load captions, added 'a' below
+                        if (((t = { a: i, src: i.attr("href"), captionText: r.attr("title"), width: null, height: null, type: null, object: null, options: null }), s.caption)) {
+                            if ("function" == typeof s.caption) c = s.caption(i);
+                            else if ("selector" in s.caption) {
+                                var a;
+                                (a = i.find(s.caption.selector)), "attribute" in s.caption ? (c = a.attr(s.caption.attribute)) : ((c = a.html()), s.caption.remove === !0 && a.remove());
                             }
-
-                            break;
-
-                        case 39:
-
-                            if (settings.usePopupNav) {
-
-                                $popup.trigger('poptrox_next');
-                                return false;
-
+                        } else c = r.attr("title");
+                        if (((t.captionText = c), n)) {
+                            var l = n.split(",");
+                            0 in l && (t.type = l[0]), 1 in l && ((p = l[1].match(/([0-9%]+)x([0-9%]+)/)), p && 3 == p.length && ((t.width = p[1]), (t.height = p[2]))), 2 in l && (t.options = l[2]);
+                        }
+                        if (!t.type)
+                            switch (((p = t.src.match(/\/\/([a-z0-9\.]+)\/.*/)), (!p || p.length < 2) && (p = [!1]), p[1])) {
+                                case "api.soundcloud.com":
+                                    t.type = "soundcloud";
+                                    break;
+                                case "youtu.be":
+                                    t.type = "youtube";
+                                    break;
+                                case "vimeo.com":
+                                    t.type = "vimeo";
+                                    break;
+                                case "wistia.net":
+                                    t.type = "wistia";
+                                    break;
+                                case "bcove.me":
+                                    t.type = "bcove";
+                                    break;
+                                default:
+                                    t.type = "image";
                             }
-
-                            break;
-
-                        case 27:
-
-                            $popup.trigger('poptrox_close');
-                            return false;
-
-                            break;
-
+                        switch (((p = t.src.match(/\/\/[a-z0-9\.]+\/(.*)/)), t.type)) {
+                            case "iframe":
+                                (t.object = e('<iframe src="" frameborder="0"></iframe>')),
+                                    t.object
+                                        .on("click", function (e) {
+                                            e.stopPropagation();
+                                        })
+                                        .css("cursor", "auto"),
+                                    (t.width && t.height) || ((t.width = "600"), (t.height = "400"));
+                                break;
+                            case "ajax":
+                                (t.object = e('<div class="poptrox-ajax"></div>')),
+                                    t.object
+                                        .on("click", function (e) {
+                                            e.stopPropagation();
+                                        })
+                                        .css("cursor", "auto")
+                                        .css("overflow", "auto"),
+                                    (t.width && t.height) || ((t.width = "600"), (t.height = "400"));
+                                break;
+                            case "soundcloud":
+                                (t.object = e('<iframe scrolling="no" frameborder="no" src=""></iframe>')),
+                                    (t.src = "//w.soundcloud.com/player/?url=" + escape(t.src) + (t.options ? "&" + t.options : "")),
+                                    (t.width = "600"),
+                                    (t.height = "166");
+                                break;
+                            case "youtube":
+                                (t.object = e('<iframe src="" frameborder="0" allowfullscreen="1"></iframe>')),
+                                    (t.src = "//www.youtube.com/embed/" + p[1] + (t.options ? "?" + t.options : "")),
+                                    (t.width && t.height) || ((t.width = "800"), (t.height = "480"));
+                                break;
+                            case "vimeo":
+                                (t.object = e('<iframe src="" frameborder="0" allowFullScreen="1"></iframe>')),
+                                    (t.src = "//player.vimeo.com/video/" + p[1] + (t.options ? "?" + t.options : "")),
+                                    (t.width && t.height) || ((t.width = "800"), (t.height = "480"));
+                                break;
+                            case "wistia":
+                                (t.object = e('<iframe src="" frameborder="0" allowFullScreen="1"></iframe>')),
+                                    (t.src = "//fast.wistia.net/" + p[1] + (t.options ? "?" + t.options : "")),
+                                    (t.width && t.height) || ((t.width = "800"), (t.height = "480"));
+                                break;
+                            case "bcove":
+                                (t.object = e('<iframe src="" frameborder="0" allowFullScreen="1" width="100%"></iframe>')),
+                                    (t.src = "//bcove.me/" + p[1] + (t.options ? "?" + t.options : "")),
+                                    (t.width && t.height) || ((t.width = "640"), (t.height = "360"));
+                                break;
+                            default:
+                                if (((t.object = e('<img src="" alt="" style="vertical-align:bottom" />')), s.preload)) {
+                                    var p = document.createElement("img");
+                                    (p.src = t.src), g.push(p);
+                                }
+                                (t.width = i.attr("width")), (t.height = i.attr("height"));
+                        }
+                        "file:" == window.location.protocol && t.src.match(/^\/\//) && (t.src = "http:" + t.src),
+                            u.push(t),
+                            r.removeAttr("title"),
+                            i
+                                .removeAttr("href")
+                                .css("cursor", "pointer")
+                                .css("outline", 0)
+                                .on("click", function (e) {
+                                    e.preventDefault(), e.stopPropagation(), x.trigger("poptrox_open", [o]);
+                                });
                     }
-
-                }
-
-            });
-
-        $this.find(settings.selector).each(function(index) {
-
-            var x, tmp, a = $(this), i = a.find('img'), data = a.data('poptrox');
-
-            // Ignore? Skip.
-            if (data == 'ignore')
-                return;
-
-            // No href? Bail.
-            if (!a.attr('href'))
-                return;
-
-            x = {
-
-                a: a,
-                src:			a.attr('href'),
-                captionText:	i.attr('title'),
-                width:			null,
-                height:			null,
-                type:			null,
-                object:			null,
-                options:		null
-
-            };
-
-            // Determine caption.
-
-            // No caption setting? Use default (title attribute of image).
-            if (!settings.caption)
-                c = i.attr('title');
-
-            // Function?
-            else if (typeof(settings.caption) == 'function')
-                c = (settings.caption)(a);
-
-            // Selector?
-            else if ('selector' in settings.caption) {
-
-                var s;
-
-                s = a.find(settings.caption.selector);
-
-                if ('attribute' in settings.caption)
-                    c = s.attr(settings.caption.attribute);
-                else {
-
-                    c = s.html();
-
-                    if (settings.caption.remove === true)
-                        s.remove();
-
-                }
-
-            }
-
-            x.captionText = c;
-
-            // If a data attribute exists, use it
-            if (data) {
-
-                var b = data.split(',');
-
-                // Type.
-                if (0 in b)
-                    x.type = b[0];
-
-                // Size.
-                if (1 in b) {
-
-                    tmp = b[1].match(/([0-9%]+)x([0-9%]+)/);
-
-                    if (tmp && tmp.length == 3) {
-
-                        x.width = tmp[1];
-                        x.height = tmp[2];
-
-                    }
-
-                }
-
-                // Options.
-                if (2 in b)
-                    x.options = b[2];
-
-            }
-
-            // No type? Attempt to guess it based on the href's domain
-            if (!x.type) {
-
-                tmp = x.src.match(/\/\/([a-z0-9\.]+)\/.*/);
-
-                if (!tmp || tmp.length < 2)
-                    tmp = [false];
-
-                switch (tmp[1]) {
-
-                    case 'api.soundcloud.com':
-                        x.type = 'soundcloud';
-                        break;
-
-                    case 'youtu.be':
-                        x.type = 'youtube';
-                        break;
-
-                    case 'vimeo.com':
-                        x.type = 'vimeo';
-                        break;
-
-                    case 'wistia.net':
-                        x.type = 'wistia';
-                        break;
-
-                    case 'bcove.me':
-                        x.type = 'bcove';
-                        break;
-
-                    default:
-                        x.type = 'image';
-                        break;
-
-                }
-
-            }
-
-            // Create object (based on type)
-            tmp = x.src.match(/\/\/[a-z0-9\.]+\/(.*)/);
-
-            switch (x.type) {
-
-                case 'iframe':
-                    x.object = $('<iframe src="" frameborder="0"></iframe>');
-                    x.object
-                        .on('click', function(e) { e.stopPropagation(); })
-                        .css('cursor', 'auto');
-
-                    if (!x.width || !x.height) {
-                        x.width = "600";
-                        x.height = "400";
-                    }
-
-                    break;
-
-                case 'ajax':
-                    x.object = $('<div class="poptrox-ajax"></div>');
-                    x.object
-                        .on('click', function(e) { e.stopPropagation(); })
-                        .css('cursor', 'auto')
-                        .css('overflow', 'auto');
-
-                    if (!x.width || !x.height) {
-                        x.width = "600";
-                        x.height = "400";
-                    }
-
-                    break;
-
-                case 'soundcloud':
-                    x.object = $('<iframe scrolling="no" frameborder="no" src=""></iframe>');
-                    x.src = '//w.soundcloud.com/player/?url=' + escape(x.src) + (x.options ? '&' + x.options : '');
-                    x.width = '600';
-                    x.height = "166";
-
-                    break;
-
-                case 'youtube':
-                    x.object = $('<iframe src="" frameborder="0" allowfullscreen="1"></iframe>');
-                    x.src = '//www.youtube.com/embed/' + tmp[1]  + (x.options ? '?' + x.options : '');
-
-                    if (!x.width || !x.height) {
-                        x.width = "800";
-                        x.height = "480";
-                    }
-
-                    break;
-
-                case 'vimeo':
-                    x.object = $('<iframe src="" frameborder="0" allowFullScreen="1"></iframe>');
-                    x.src = '//player.vimeo.com/video/' + tmp[1]  + (x.options ? '?' + x.options : '');
-
-                    if (!x.width || !x.height) {
-                        x.width = "800";
-                        x.height = "480";
-                    }
-
-                    break;
-
-                case 'wistia':
-                    x.object = $('<iframe src="" frameborder="0" allowFullScreen="1"></iframe>');
-                    x.src = '//fast.wistia.net/' + tmp[1] + (x.options ? '?' + x.options : '');
-
-                    if (!x.width || !x.height) {
-                        x.width = "800";
-                        x.height = "480";
-                    }
-
-                    break;
-
-                case 'bcove':
-                    x.object = $('<iframe src="" frameborder="0" allowFullScreen="1" width="100%"></iframe>');
-                    x.src = '//bcove.me/' + tmp[1] + (x.options ? '?' + x.options : '');
-
-                    if (!x.width || !x.height) {
-                        x.width = "640";
-                        x.height = "360";
-                    }
-
-                    break;
-
-                default:
-                    x.object = $('<img src="" alt="" style="vertical-align:bottom" />');
-
-                    if (settings.preload) {
-
-                        var tmp = document.createElement('img');
-                        tmp.src = x.src; cache.push(tmp);
-
-                    }
-
-                    x.width = a.attr('width');
-                    x.height = a.attr('height');
-
-                    break;
-
-            }
-
-            // Fix src if protocol is 'file'.
-            if (window.location.protocol == 'file:'
-                &&	x.src.match(/^\/\//))
-                x.src = 'http:' + x.src;
-
-            queue.push(x);
-
-            i.attr('title', '');
-
-            a
-                .attr('href', '')
-                .css('outline', 0)
-                .on('click', function(e) {
-
-                    e.preventDefault();
-                    e.stopPropagation();
-
-                    $popup.trigger('poptrox_open', [index]);
-
-                });
-
+                }),
+                r.prop("_poptrox", s),
+                r
+            );
         });
-
-        $this.prop("_poptrox", settings);
-        
-        return $(this);
-
-    };
-
 })(jQuery);
