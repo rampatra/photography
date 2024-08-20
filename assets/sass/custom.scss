@@ -1,0 +1,23 @@
+/* Footer */
+#footer {
+	.presentify {
+		margin: 0 0 1.4em 0;
+		display: flex;
+		justify-content: space-between;
+
+		.presentify-logo {
+			a {
+				border: 0;
+			}
+
+			img {
+				width: 72px;
+				height: 72px;
+			}
+		}
+
+		.presentify-text {
+			padding-top: 10px;
+		}
+	}
+}
