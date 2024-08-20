@@ -108,7 +108,23 @@ layout: default
             <div>
                 <section>
                     <h2>Get in touch</h2>
-                    <p>Reach me via email at: <a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+                    <form method="post" action="#">
+                        <div class="fields">
+                            <div class="field half">
+                                <input type="text" name="name" id="name" placeholder="Name" />
+                            </div>
+                            <div class="field half">
+                                <input type="text" name="email" id="email" placeholder="Email" />
+                            </div>
+                            <div class="field">
+                                <textarea name="message" id="message" rows="4" placeholder="Message"></textarea>
+                            </div>
+                        </div>
+                        <ul class="actions">
+                            <li><input type="submit" value="Send" class="primary" /></li>
+                            <li><input type="reset" value="Reset" /></li>
+                        </ul>
+                    </form>
                 </section>
             </div>
         </div>
