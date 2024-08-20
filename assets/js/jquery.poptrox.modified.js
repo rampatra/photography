@@ -1,5 +1,7 @@
-/* jquery.poptrox.js v2.5.2-dev | (c) @ajlkn | github.com/ajlkn/jquery.poptrox | MIT licensed */
-
+/* 
+  jquery.poptrox.js v2.5.2-dev | (c) @ajlkn | github.com/ajlkn/jquery.poptrox | MIT licensed 
+  Modified to add lazy loading for caption. See comments for 'Lazy load captions'.
+*/
 (function($) {
 
 	// Disables selection
@@ -405,6 +407,9 @@
 
 						var x, img;
 
+                        // Lazy load captions
+                        var lazyCaption;
+
 						if (!ignoreLock && isLocked)
 							return true;
 
@@ -478,7 +483,15 @@
 
 								$x.off('load');
 								$loader.hide().trigger('stopSpinning');
-								$caption.trigger('update', [x.captionText]).fadeIn(settings.fadeSpeed);
+
+                                // Lazy load captions
+                                if (typeof settings.caption == "function") {
+                                    lazyCaption = settings.caption(x.a);
+                                } else {
+                                    lazyCaption = x.captionText;
+                                }
+                                $caption.trigger("update", [lazyCaption]).fadeIn(settings.fadeSpeed);
+
 								$closer.fadeIn(settings.fadeSpeed);
 								$pic.css('text-indent', 0).hide().fadeIn(settings.fadeSpeed, function() { isLocked = false; });
 								navPos = index;
@@ -500,7 +513,14 @@
 									nh = $x.height(),
 									f = function() {
 
-										$caption.trigger('update', [x.captionText]).fadeIn(settings.fadeSpeed);
+                                        // Lazy load captions
+                                        if (typeof settings.caption == "function") {
+                                            lazyCaption = settings.caption(x.a);
+                                        } else {
+                                            lazyCaption = x.captionText;
+                                        }
+                                        $caption.trigger("update", [lazyCaption]).fadeIn(settings.fadeSpeed);
+
 										$closer.fadeIn(settings.fadeSpeed);
 										$pic.css('text-indent', 0).hide().fadeIn(settings.fadeSpeed, function() { isLocked = false; });
 										navPos = index;
@@ -637,7 +657,8 @@
 							return;
 
 					x = {
-
+                        // Lazy load captions, added 'a' below
+                        a:              a,
 						src:			a.attr('href'),
 						captionText:	i.attr('title'),
 						width:			null,
