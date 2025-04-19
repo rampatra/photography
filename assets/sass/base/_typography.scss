@@ -14,7 +14,7 @@
 		letter-spacing: _font(kerning);
 		line-height: 1.65;
 
-		@include breakpoint(xlarge) {
+		@include breakpoint('<=xlarge') {
 			font-size: 11pt;
 		}
 	}
@@ -85,7 +85,7 @@
 		font-size: 0.7em;
 	}
 
-	@include breakpoint(small) {
+	@include breakpoint('<=small') {
 		h2 {
 			font-size: 1em;
 		}
