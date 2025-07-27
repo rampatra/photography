@@ -7,23 +7,23 @@ image_thumbs_loc: "/images/thumbs"
 google_analytics: "UA-46465113-2"
 
 # UI configs
-title: "Photography by Ram Patra"
+title: "Photography by Mark Mozheiko"
 subtitle: "See the world through my eyes!"
-author: "Ram Patra"
+author: "Mark Mozheiko"
 header:
  title: "Photography"
- subtitle: "by Ram Patra"
+ subtitle: "by Mark Mozheiko"
 footer:
- name: "Hey there, my name is Ram"
- bio: "I am a developer and a tech aficionado from India. Love making teeny tiny apps solving tiny problems in life and now learning photography."
- github: "Want a website like this for yourself for free? Just <a href=\"https://github.com/ramswaroop/photography\">fork this repo on github</a> ;)"
-web_design: "AJ"
+ name: "Hi there, I am Mark Mozheiko but friends call me just Mark."
+ bio: "I am a data specialist and finance graduate from Finland. I love building various products and services, and I am currently also into photography and branding."
+ #github: "Want a website like this for yourself for free? Just <a href=\"https://github.com/ramswaroop/photography\">fork this repo on github</a> ;)"
+#web_design: "AJ"
 # Configure which exif data to display
 # Tag is the actual exif tag, icon is a fontawesome icon. Use JSON notation without line breaks
 exif: '[{"tag": "Model", "icon": "camera-retro"}, {"tag": "FNumber", "icon": "dot-circle-o"}, {"tag": "ExposureTime", "icon": "clock-o"}, {"tag": "ISOSpeedRatings", "icon": "info-circle"}]'
 social_urls:
-  twitter: "https://www.twitter.com/ram__patra"
-  instagram: "https://www.instagram.com/ram_patra"
-  dribbble: "https://dribbble.com/rampatra"
-  linkedin: "https://in.linkedin.com/in/ram-patra"
-  github: "https://www.github.com/rampatra"
+  twitter: "https://x.com/xAlexDevx"
+  instagram: "https://www.instagram.com/mozhmark?igsh=MXEzd2ZhdHdiaG9vdQ%3D%3D&utm_source=qr"
+  #dribbble: "https://dribbble.com/rampatra"
+  linkedin: "https://www.linkedin.com/in/mark-mozheiko-009681166"
+  github: "https://github.com/xalexdevx"
