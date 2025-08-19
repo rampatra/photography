@@ -17,27 +17,35 @@
 		}
 
 	// Ensures page width is always >=320px.
-		@include breakpoint(xsmall) {
+		@include breakpoint('<=xsmall') {
 			html, body {
 				min-width: 320px;
 			}
 		}
 
+	// Set box model to border-box.
+	// Based on css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice
+		html {
+			box-sizing: border-box;
+		}
+
+		*, *:before, *:after {
+			box-sizing: inherit;
+		}
+
 	body {
 		background: _palette(bg);
 
-		// Prevents animation/transition "flicker" on page load and triggers various
-		// on-load animations when removed. Automatically added/removed by js/main.js.
-			&.loading {
+		// Stops initial animations until page loads.
+			&.is-preload {
 				*, *:before, *:after {
 					@include vendor('animation', 'none !important');
 					@include vendor('transition', 'none !important');
 				}
 			}
 
-		// Prevents animation/transition "flicker" on resize.
-		// Automatically added/removed by js/main.js.
-			&.resizing {
+		// Prevents animations while resizing.
+			&.is-resizing {
 				*, *:before, *:after {
 					@include vendor('animation', 'none !important');
 					@include vendor('transition', 'none !important');

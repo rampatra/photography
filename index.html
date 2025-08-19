@@ -59,42 +59,42 @@ layout: default
                     <ul class="icons">
                         {% if site.social_urls.facebook %}
                             <li>
-                                <a href="{{ site.social_urls.facebook }}" class="icon fa-facebook">
+                                <a href="{{ site.social_urls.facebook }}" class="icon brands fa-facebook">
                                     <span class="label">Facebook</span>
                                 </a>
                             </li>
                         {% endif %}
                         {% if site.social_urls.twitter %}
                             <li>
-                                <a href="{{ site.social_urls.twitter }}" class="icon fa-twitter">
+                                <a href="{{ site.social_urls.twitter }}" class="icon brands fa-twitter">
                                     <span class="label">Twitter</span>
                                 </a>
                             </li>
                         {% endif %}
                         {% if site.social_urls.instagram %}
                             <li>
-                                <a href="{{ site.social_urls.instagram }}" class="icon fa-instagram">
+                                <a href="{{ site.social_urls.instagram }}" class="icon brands fa-instagram">
                                     <span class="label">Instagram</span>
                                 </a>
                             </li>
                         {% endif %}
                         {% if site.social_urls.dribbble %}
                             <li>
-                                <a href="{{ site.social_urls.dribbble }}" class="icon fa-dribbble">
+                                <a href="{{ site.social_urls.dribbble }}" class="icon brands fa-dribbble">
                                     <span class="label">Dribbble</span>
                                 </a>
                             </li>
                         {% endif %}
                         {% if site.social_urls.github %}
                             <li>
-                                <a href="{{ site.social_urls.github }}" class="icon fa-github">
+                                <a href="{{ site.social_urls.github }}" class="icon brands fa-github">
                                     <span class="label">GitHub</span>
                                 </a>
                             </li>
                         {% endif %}
                         {% if site.social_urls.linkedin %}
                             <li>
-                                <a href="{{ site.social_urls.linkedin }}" class="icon fa-linkedin">
+                                <a href="{{ site.social_urls.linkedin }}" class="icon brands fa-linkedin">
                                     <span class="label">LinkedIn</span>
                                 </a>
                             </li>
@@ -109,18 +109,20 @@ layout: default
                 <section>
                     <h2>Get in touch</h2>
                     <form method="post" action="#">
-                        <div class="field half first">
-                            <input type="text" name="name" id="name" placeholder="Name"/>
-                        </div>
-                        <div class="field half">
-                            <input type="text" name="email" id="email" placeholder="Email"/>
-                        </div>
-                        <div class="field">
-                            <textarea name="message" id="message" rows="4" placeholder="Message"></textarea>
+                        <div class="fields">
+                            <div class="field half">
+                                <input type="text" name="name" id="name" placeholder="Name" />
+                            </div>
+                            <div class="field half">
+                                <input type="text" name="email" id="email" placeholder="Email" />
+                            </div>
+                            <div class="field">
+                                <textarea name="message" id="message" rows="4" placeholder="Message"></textarea>
+                            </div>
                         </div>
                         <ul class="actions">
-                            <li><input type="submit" value="Send" class="special"/></li>
-                            <li><input type="reset" value="Reset"/></li>
+                            <li><input type="submit" value="Send" class="primary" /></li>
+                            <li><input type="reset" value="Reset" /></li>
                         </ul>
                     </form>
                 </section>
