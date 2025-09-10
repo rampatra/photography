@@ -79,4 +79,4 @@ Proudly sponsored by these awesome apps. Support this project by becoming a spon
 
 ---
 
-_P.S. For any queries or concerns, you can reach out to me on [Twitter](https://twitter.com/ram__patra). I'll try my best to help 🙏._
+_P.S. For any queries or concerns, you can reach out to me on [Twitter](https://twitter.com/rampatra_). I'll try my best to help 🙏._
