@@ -76,7 +76,7 @@
 			width: 2em;
 		}
 
-		body.loading & {
+		body.is-preload & {
 			&:before {
 				@include vendor('transition', 'opacity 1s ease-out !important');
 				@include vendor('transition-delay', '0.5s !important');

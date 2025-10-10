@@ -17,10 +17,10 @@
 
 		&:before {
 			@include vendor('transition', 'opacity #{_duration(transition)} ease-in-out');
-			/*@include vendor('background-image', (
+			@include vendor('background-image', (
 				'linear-gradient(to left, rgba(31,34,36,0.35), rgba(31,34,36,0) 10em, rgba(31,34,36,0))',
 				'linear-gradient(to right, rgba(31,34,36,0.35), rgba(31,34,36,0) 10em, rgba(31,34,36,0))'
-			));*/
+			));
 			content: '';
 			display: block;
 			height: 100%;
@@ -116,7 +116,7 @@
 			.closer,
 			.nav-previous,
 			.nav-next {
-				opacity: 0.6;
+				opacity: 0.5;
 
 				&:hover {
 					opacity: 1.0;
@@ -138,7 +138,7 @@
 			}
 		}
 
-		@include breakpoint(medium) {
+		@include breakpoint('<=medium') {
 			.closer {
 				background-size: 3em;
 			}
@@ -149,7 +149,7 @@
 			}
 		}
 
-		@include breakpoint(small) {
+		@include breakpoint('<=small') {
 			&:before {
 				display: none;
 			}
