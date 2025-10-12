@@ -1,28 +1,23 @@
 # Base configs
-baseurl: "https://photography.rampatra.com"
-#baseurl: "" # Comment the above line and uncomment this to test the website locally
+#baseurl: "https://pdxdiver.io"
+baseurl: "" # Comment the above line and uncomment this to test the website locally
 image_fulls_loc: "/images/fulls"
 image_thumbs_loc: "/images/thumbs"
-google_analytics: "UA-46465113-2"
 
 # UI configs
-title: "Photography by Ram Patra"
-subtitle: "See the world through my eyes!"
-author: "Ram Patra"
+title: "Photography by @pdxdiver"
+# subtitle: "ddddd"
+author: "Dan Carr"
 header:
  title: "Photography"
- subtitle: "by Ram Patra"
+ subtitle: "by Dan Carr"
 footer:
- name: "Hey there, my name is Ram"
- bio: "I am a developer and a tech aficionado from India. Love making teeny tiny apps solving tiny problems in life and now learning photography."
- github: "Want a website like this for yourself for free? Just <a href=\"https://github.com/ramswaroop/photography\">fork this repo on github</a> ;)"
-web_design: "AJ"
+ name: "Hey There, Dan here"
+ bio: "I am an underwater photographer, diver, and lifelong explorer of the hidden world beneath the waves. I’m endlessly fascinated by the small and often overlooked creatures that bring coral reefs to life — from flamboyant nudibranchs and pygmy seahorses to curious frogfish and ribbon eels. My photography blends art and technology, capturing these fragile moments in vivid detail while keeping the process true to nature. When I’m not diving or fine-tuning images, I’m usually tinkering with creative tech — from AI-driven photo tools to smart, cloud-based workflows. This site is my way of sharing those passions — a mix of ocean wonder, creative experimentation, and genuine curiosity about how beauty and technology can meet underwater."
 # Configure which exif data to display
 # Tag is the actual exif tag, icon is a fontawesome icon. Use JSON notation without line breaks
 exif: '[{"tag": "Model", "icon": "camera-retro"}, {"tag": "FNumber", "icon": "dot-circle-o"}, {"tag": "ExposureTime", "icon": "clock-o"}, {"tag": "ISOSpeedRatings", "icon": "info-circle"}]'
 social_urls:
-  twitter: "https://www.twitter.com/ram__patra"
-  instagram: "https://www.instagram.com/ram_patra"
-  dribbble: "https://dribbble.com/rampatra"
-  linkedin: "https://in.linkedin.com/in/ram-patra"
-  github: "https://www.github.com/rampatra"
+  instagram: "https://www.instagram.com/pdxdiver.io"
+  linkedin: "https://www.linkedin.com/in/ddcarr"
+  facebook: "https://www.facebook.com/pdxdiver"
