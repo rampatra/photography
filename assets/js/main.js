@@ -22,42 +22,29 @@
             $body = $('body'),
             $wrapper = $('#wrapper');
 
-        // Hack: Enable IE workarounds.
-        if (skel.vars.IEVersion < 12)
-            $body.addClass('ie');
-
         // Touch?
         if (skel.vars.mobile)
             $body.addClass('touch');
 
-        // Transitions supported?
-        if (skel.canUse('transition')) {
+        // Add (and later, on load, remove) "loading" class.
+        $body.addClass('loading');
 
-            // Add (and later, on load, remove) "loading" class.
-            $body.addClass('loading');
+        $window.on('load', function () {
+            window.setTimeout(function () {
+                $body.removeClass('loading');
+            }, 100);
+        });
 
-            $window.on('load', function () {
-                window.setTimeout(function () {
-                    $body.removeClass('loading');
-                }, 100);
-            });
+        // Prevent transitions/animations on resize.
+        var resizeTimeout;
 
-            // Prevent transitions/animations on resize.
-            var resizeTimeout;
-
-            $window.on('resize', function () {
-
-                window.clearTimeout(resizeTimeout);
-
-                $body.addClass('resizing');
-
-                resizeTimeout = window.setTimeout(function () {
-                    $body.removeClass('resizing');
-                }, 100);
-
-            });
-
-        }
+        $window.on('resize', function () {
+            window.clearTimeout(resizeTimeout);
+            $body.addClass('resizing');
+            resizeTimeout = window.setTimeout(function () {
+                $body.removeClass('resizing');
+            }, 100);
+        });
 
         // Scroll back to top.
         $window.scrollTop(0);
@@ -242,16 +229,6 @@
 
             // Hide original img.
             $image_img.hide();
-
-            // Hack: IE<11 doesn't support pointer-events, which means clicks to our image never
-            // land as they're blocked by the thumbnail's caption overlay gradient. This just forces
-            // the click through to the image.
-            if (skel.vars.IEVersion < 11)
-                $this
-                    .css('cursor', 'pointer')
-                    .on('click', function () {
-                        $image.trigger('click');
-                    });
 
             // EXIF data					
             EXIF.getData($image_img[0], function () {

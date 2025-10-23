@@ -21,9 +21,11 @@ layout: default
             {% if image.path contains 'fulls' %}
                 <article class="thumb">
                     <a href="{{ site.baseurl }}{{ site.image_fulls_loc }}/{{ image.name }}" class="image">
-                    <img src="{{ site.baseurl }}{{ site.image_thumbs_loc }}/{{ image.name }}" alt="" data-name="{{ image.name }}"/></a>
-                    <!--<h2></h2>
-                    <p></p>-->
+                    <img src="{{ site.baseurl }}{{ site.image_thumbs_loc }}/{{ image.name }}"
+                         alt="Photography by {{ site.author }}"
+                         loading="lazy"
+                         decoding="async"
+                         data-name="{{ image.name }}"/></a>
                 </article>
             {% endif %}
         {% endfor %}
@@ -68,15 +70,16 @@ layout: default
             <div>
                 <section>
                     <h2>Get in touch</h2>
-                    <form method="post" action="#">
+                    <form method="post" action="https://formspree.io/f/YOUR_FORM_ID" netlify-honeypot="bot-field" data-netlify="true">
+                        <input type="hidden" name="bot-field" />
                         <div class="field half first">
-                            <input type="text" name="name" id="name" placeholder="Name"/>
+                            <input type="text" name="name" id="name" placeholder="Name" required aria-label="Name"/>
                         </div>
                         <div class="field half">
-                            <input type="text" name="email" id="email" placeholder="Email"/>
+                            <input type="email" name="email" id="email" placeholder="Email" required aria-label="Email"/>
                         </div>
                         <div class="field">
-                            <textarea name="message" id="message" rows="4" placeholder="Message"></textarea>
+                            <textarea name="message" id="message" rows="4" placeholder="Message" required aria-label="Message"></textarea>
                         </div>
                         <ul class="actions">
                             <li><input type="submit" value="Send" class="special"/></li>

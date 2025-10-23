@@ -75,4 +75,18 @@ jspm_packages
 # Optional REPL history
 .node_repl_history
 
+# Lock files
 /Gemfile.lock
+package-lock.json
+yarn.lock
+
+# VS Code
+.vscode/
+
+# Build artifacts
+dist/
+build/
+
+# Environment files
+.env
+.env.local

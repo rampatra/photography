@@ -19,3 +19,31 @@ social_urls:
   dribbble: "https://dribbble.com/michaelcolenso"
   linkedin: "https://in.linkedin.com/in/michaelcolenso"
   github: "https://www.github.com/michaelcolenso"
+
+# Build settings
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - package.json
+  - package-lock.json
+  - gulpfile.js
+  - README.md
+  - LICENSE
+
+# Performance optimizations
+sass:
+  style: compressed
+
+# Jekyll 3+ settings
+plugins:
+  - jekyll-seo-tag
+
+# Compression
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  startings: []
+  blanklines: false
+  profile: false
