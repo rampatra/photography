@@ -1,15 +1,20 @@
 <title>{{ site.title }}</title>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
-<!--[if lte IE 8]>
-<script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-<link rel="stylesheet" href="assets/css/main.min.css"/>
-<!--[if lte IE 9]>
-<link rel="stylesheet" href="assets/css/ie9.css"/><![endif]-->
-<!--[if lte IE 8]>
-<link rel="stylesheet" href="assets/css/ie8.css"/><![endif]-->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+<!-- Load resources -->
+<link rel="stylesheet" href="assets/css/main.min.css" />
+<noscript><link rel="stylesheet" href="assets/css/noscript.min.css" /></noscript>
+<link rel="stylesheet" href="assets/css/custom.min.css" />
+
+<link rel="stylesheet" href="/assets/css/fontawesome-all.min.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400,400italic">
+
 {% if site.google_analytics %}
-<!-- Google Analytics (GA4) -->
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
