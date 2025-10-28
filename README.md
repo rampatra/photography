@@ -27,7 +27,7 @@ And, of course, you don't want my name at the bottom to show up. You can change 
 ## Run the website locally to test
 1. `$ cd photography` - go to the project directory
 2. `$ bundle install` - install gems
-3. Change the `baseurl` in `_config.yml`
+3. Change the `baseurl` in `_config.yml` to an empty value
 4. `$ bundle exec jekyll serve` - start/run the website
 
 ### Build the website
