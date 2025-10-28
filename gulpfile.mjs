@@ -9,6 +9,13 @@ import path from 'path';
 import del from 'del';
 
 const sass = gulpSass(dartSass);
+const cssSourceGlob = './assets/sass/**/*.scss';
+const cssOutputDir = './assets/css';
+const generatedCssFiles = [
+    `${cssOutputDir}/custom.min.css`,
+    `${cssOutputDir}/main.min.css`,
+    `${cssOutputDir}/noscript.min.css`
+];
 
 gulp.task('delete', function () {
     return del(['images/*.*']);
@@ -28,15 +35,20 @@ gulp.task('resize-images', function () {
         .pipe(gulp.dest('images/thumbs'));
 });
 
+// clear previously generated css
+gulp.task('clean-css', function () {
+    return del(generatedCssFiles);
+});
+
 // compile scss to css
-gulp.task('sass', function () {
-    return gulp.src('./assets/sass/**/*.scss')  // Target all .scss files
+gulp.task('sass', gulp.series('clean-css', function compileSass() {
+    return gulp.src(cssSourceGlob)  // Target all .scss files
         .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
         .pipe(rename(function (path) {
             path.basename += '.min';  // Append .min to the output filename
         }))
-        .pipe(gulp.dest('./assets/css'));  // Output to the CSS directory
-});
+        .pipe(gulp.dest(cssOutputDir));  // Output to the CSS directory
+}));
 
 // watch changes in scss files and run sass task
 gulp.task('sass:watch', function () {
